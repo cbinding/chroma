@@ -1,0 +1,165 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: sans-serif;
+            font-size: 1em;
+            background-color: white;
+        }
+        .legend {
+            display: flex;
+            justify-content: left;
+            align-items: center; 
+            margin-bottom: 5px;    
+        }
+        .legend-item {
+            display: flex;
+            justify-content: left;
+            align-items: center; 
+            margin-bottom: 5px;    
+        }
+        .palette {
+            display: flex;
+            justify-content: left;
+            align-items: center; 
+            margin-bottom: 5px;            
+        } 
+        .palette-label {
+            margin-left: 5px;
+        }
+        .palette-swatch {
+          width: 30px;
+          height: 30px;
+          display: inline-block;
+          border: 1px solid lightgray;
+          text-align:center;
+          color: white;
+        }
+    </style>
+
+    <!--load palettes from external JSON fies-->
+    <!--<script src="colorbrewer.js"></script>-->    
+    <script type="module">
+        window.palettes = {}
+        // Color schemes from https://colorbrewer2.org/ by Cynthia A. Brewer, Geography, Pennsylvania State University
+        // colorbrewer.json obtained from https://github.com/axismaps/colorbrewer/blob/master/export/colorbrewer.json  
+        import colorbrewer from './data/colorbrewer.json' assert { type: 'json' }
+        palettes.colorbrewer = colorbrewer
+
+        // OS palettes from https://github.com/OrdnanceSurvey/GeoDataViz-Toolkit/blob/master/Colours/GDV-colour-palettes-v0.7.json        
+        import ospalettes from './data/GDV-colour-palettes-v0.7.json' assert { type: 'json' }
+        palettes.os = ospalettes
+
+        import osmm from './data/osmm-palettes.json' assert { type: 'json' }
+        palettes.osmm = osmm
+
+        // LOSPEC palettes       
+        import lospec from './data/lospec-cvd-palettes.json' assert { type: 'json' }
+        palettes.lospec = lospec
+
+        // Contains Peter's palette, CANMORE legend and PastMap legend        
+        import prisma from './data/prisma-palettes-v0.1.json' assert { type: 'json' }
+        palettes.prisma = prisma
+    </script>    
+    
+    <script>                      
+        // display a palette based on array of colour values passed
+        const displayPalette = (colours, label="") => {
+            
+            const palette = document.createElement('div') 
+            palette.classList.add('palette')
+            const title = document.createElement('span')
+            title.classList.add('palette-label')
+            title.textContent = `${label} (${colours.length} colours)`
+            
+            colours.forEach(colour => {
+                const swatch = document.createElement('div')
+                swatch.classList.add('palette-swatch')
+                swatch.style.backgroundColor = colour
+                swatch.title=colour
+                palette.appendChild(swatch)
+            }) 
+            palette.appendChild(title)    
+
+            const container = document.getElementById('container')  
+            container.appendChild(palette)          
+        }        
+        
+        // display multiple palettes; each palette is an array of colour values
+        const displayPalettes = (palettes) => palettes.forEach(palette => displayPalette(palette.colours || [], palette.label || ""))
+        //const displayPalettes = (palettes) => palettes.forEach(palette => displayLegend(palette.colours || [], palette.label || ""))
+        
+        // display a specific set of predefined palettes
+        const displayAll = () => displayPalettes([           
+            // Peter's 12 colour palette
+            {label: "Peter's legend", colours: palettes.prisma.peters.map(item => item.colour)},
+            // https://canmore.org.uk/site/search/result?view=map&layer=airborne
+            // color values obtained using Chrome eyedropper extension on legend (scroll down)
+            {label: "Canmore legend", colours: palettes.prisma.canmore.map(item => item.colour)},
+            // https://pastmap.org.uk/map
+             // color values obtained using Chrome eyedropper extension on legend
+            {label: "Pastmap legend", colours: palettes.prisma.pastmap.map(item => item.colour)},
+                         
+            // Ordnance Survey - qualitative        
+            {label: "Ordnance Survey - qualitative.lookup.values", colours: Object.values(palettes.os.qualitative.lookup)}, 
+            // Ordnance Survey - diverging
+            {label: "Ordnance Survey - diverging.d1", colours: palettes.os.diverging.d1},
+            {label: "Ordnance Survey - diverging.d2", colours: palettes.os.diverging.d2},
+            // Ordnance Survey - sequential   
+            {label: "Ordnance Survey - sequential.m1", colours: palettes.os.sequential.m1},  
+            {label: "Ordnance Survey - sequential.m2", colours: palettes.os.sequential.m2}, 
+            {label: "Ordnance Survey - sequential.m3", colours: palettes.os.sequential.m3}, 
+            {label: "Ordnance Survey - sequential.s1", colours: palettes.os.sequential.s1}, 
+            {label: "Ordnance Survey - sequential.s2", colours: palettes.os.sequential.s2}, 
+            {label: "Ordnance Survey - sequential.s3", colours: palettes.os.sequential.s3}, 
+            // Ordnance Survey - projects   
+            {label: "Ordnance Survey - projects.mars_map", colours: palettes.os.projects.mars_map},
+            {label: "Ordnance Survey - projects.moon_map", colours: palettes.os.projects.moon_map},
+
+            // OSMM
+            { label: "OSMM topo_area", colours: palettes.osmm.topo_area.map(item => item.colour) },
+            { label: "OSMM topo_line", colours: palettes.osmm.topo_line.map(item => item.colour) },
+            { label: "OSMM topo_point", colours: palettes.osmm.topo_point.map(item => item.colour) },
+            { label: "OSMM carto_text", colours: palettes.osmm.carto_text.map(item => item.colour) },
+            { label: "OSMM carto_symbol", colours: palettes.osmm.carto_symbol.map(item => item.colour) },
+            { label: "OSMM boundary_line", colours: palettes.osmm.boundary_line.map(item => item.colour) },
+                        
+            // Brewer - diverging   
+            {label: "Brewer - diverging colorbrewer.BrBG", colours: palettes.colorbrewer.BrBG[11]},
+            {label: "Brewer - diverging colorbrewer.PiYG", colours: palettes.colorbrewer.PiYG[11]},
+            {label: "Brewer - diverging colorbrewer.PRGn", colours: palettes.colorbrewer.PRGn[11]},
+            {label: "Brewer - diverging colorbrewer.PuOr", colours: palettes.colorbrewer.PuOr[11]},
+            {label: "Brewer - diverging colorbrewer.RdBu", colours: palettes.colorbrewer.RdBu[11]},
+            {label: "Brewer - diverging colorbrewer.RdYlBu", colours: palettes.colorbrewer.RdYlBu[11]},
+            // Brewer - sequential, multi-hue            
+            {label: "Brewer - sequential, multi-hue colorbrewer.BuGn", colours: palettes.colorbrewer.BuGn[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.BuPu", colours: palettes.colorbrewer.BuPu[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.GnBu", colours: palettes.colorbrewer.GnBu[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.OrRd", colours: palettes.colorbrewer.OrRd[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.PuBu", colours: palettes.colorbrewer.PuBu[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.PuBuGn", colours: palettes.colorbrewer.PuBuGn[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.PuRd", colours: palettes.colorbrewer.PuRd[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.RdPu", colours: palettes.colorbrewer.RdPu[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.YlGn", colours: palettes.colorbrewer.YlGn[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.YlGnBu", colours: palettes.colorbrewer.YlGnBu[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.YlOrBr", colours: palettes.colorbrewer.YlOrBr[9]},
+            //{label: "Brewer - sequential, multi-hue colorbrewer.YlOrRd", colours: colorbrewer.YlOrRd[9]},            
+            // Brewer - sequential, single hue            
+            {label: "Brewer - sequential, single hue colorbrewer.Blues", colours: palettes.colorbrewer.Blues[9]},
+            {label: "Brewer - sequential, single hue colorbrewer.Greens", colours: palettes.colorbrewer.Greens[9]},
+            {label: "Brewer - sequential, single hue colorbrewer.Greys", colours: palettes.colorbrewer.Greys[9]},
+            {label: "Brewer - sequential, single hue colorbrewer.Oranges", colours: palettes.colorbrewer.Oranges[9]},
+            {label: "Brewer - sequential, single hue colorbrewer.Purples", colours: palettes.colorbrewer.Purples[9]},
+            {label: "Brewer - sequential, single hue colorbrewer.Reds", colours: palettes.colorbrewer.Reds[9]}, 
+
+            // lospec - pixel art and video gaming e.g. https://lospec.com/palette-list/cvd8          
+            {label: "lospec - cvd8", colours: palettes.lospec.cvd8},
+            {label: "lospec - krzywinski", colours: palettes.lospec.krzywinski}, 
+            {label: "lospec - ibmcolorblindsafe", colours: palettes.lospec.ibmcolorblindsafe},             
+        ])  
+    </script>
+</head>
+<body onload="displayAll()"></body>
+    <div id="container"></div>
+</body>
+</html>
