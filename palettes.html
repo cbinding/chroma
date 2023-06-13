@@ -43,12 +43,12 @@
         window.palettes = {}
         // Color schemes from https://colorbrewer2.org/ by Cynthia A. Brewer, Geography, Pennsylvania State University
         // colorbrewer.json obtained from https://github.com/axismaps/colorbrewer/blob/master/export/colorbrewer.json  
-        import colorbrewer from './data/colorbrewer.json' assert { type: 'json' }
-        palettes.colorbrewer = colorbrewer
+        import brewer from './data/colorbrewer.json' assert { type: 'json' }
+        palettes.brewer = brewer
 
         // OS palettes from https://github.com/OrdnanceSurvey/GeoDataViz-Toolkit/blob/master/Colours/GDV-colour-palettes-v0.7.json        
-        import ospalettes from './data/GDV-colour-palettes-v0.7.json' assert { type: 'json' }
-        palettes.os = ospalettes
+        import gdv from './data/GDV-colour-palettes-v0.7.json' assert { type: 'json' }
+        palettes.gdv = gdv
 
         import osmm from './data/osmm-palettes.json' assert { type: 'json' }
         palettes.osmm = osmm
@@ -101,20 +101,20 @@
             {label: "Pastmap legend", colours: palettes.prisma.pastmap.map(item => item.colour)},
                          
             // Ordnance Survey - qualitative        
-            {label: "Ordnance Survey - qualitative.lookup.values", colours: Object.values(palettes.os.qualitative.lookup)}, 
+            {label: "Ordnance Survey - qualitative.lookup.values", colours: Object.values(palettes.gdv.qualitative.lookup)}, 
             // Ordnance Survey - diverging
-            {label: "Ordnance Survey - diverging.d1", colours: palettes.os.diverging.d1},
-            {label: "Ordnance Survey - diverging.d2", colours: palettes.os.diverging.d2},
+            {label: "Ordnance Survey - diverging.d1", colours: palettes.gdv.diverging.d1},
+            {label: "Ordnance Survey - diverging.d2", colours: palettes.gdv.diverging.d2},
             // Ordnance Survey - sequential   
-            {label: "Ordnance Survey - sequential.m1", colours: palettes.os.sequential.m1},  
-            {label: "Ordnance Survey - sequential.m2", colours: palettes.os.sequential.m2}, 
-            {label: "Ordnance Survey - sequential.m3", colours: palettes.os.sequential.m3}, 
-            {label: "Ordnance Survey - sequential.s1", colours: palettes.os.sequential.s1}, 
-            {label: "Ordnance Survey - sequential.s2", colours: palettes.os.sequential.s2}, 
-            {label: "Ordnance Survey - sequential.s3", colours: palettes.os.sequential.s3}, 
+            {label: "Ordnance Survey - sequential.m1", colours: palettes.gdv.sequential.m1},  
+            {label: "Ordnance Survey - sequential.m2", colours: palettes.gdv.sequential.m2}, 
+            {label: "Ordnance Survey - sequential.m3", colours: palettes.gdv.sequential.m3}, 
+            {label: "Ordnance Survey - sequential.s1", colours: palettes.gdv.sequential.s1}, 
+            {label: "Ordnance Survey - sequential.s2", colours: palettes.gdv.sequential.s2}, 
+            {label: "Ordnance Survey - sequential.s3", colours: palettes.gdv.sequential.s3}, 
             // Ordnance Survey - projects   
-            {label: "Ordnance Survey - projects.mars_map", colours: palettes.os.projects.mars_map},
-            {label: "Ordnance Survey - projects.moon_map", colours: palettes.os.projects.moon_map},
+            {label: "Ordnance Survey - projects.mars_map", colours: palettes.gdv.projects.mars_map},
+            {label: "Ordnance Survey - projects.moon_map", colours: palettes.gdv.projects.moon_map},
 
             // OSMM
             { label: "OSMM topo_area", colours: palettes.osmm.topo_area.map(item => item.colour) },
@@ -125,32 +125,32 @@
             { label: "OSMM boundary_line", colours: palettes.osmm.boundary_line.map(item => item.colour) },
                         
             // Brewer - diverging   
-            {label: "Brewer - diverging colorbrewer.BrBG", colours: palettes.colorbrewer.BrBG[11]},
-            {label: "Brewer - diverging colorbrewer.PiYG", colours: palettes.colorbrewer.PiYG[11]},
-            {label: "Brewer - diverging colorbrewer.PRGn", colours: palettes.colorbrewer.PRGn[11]},
-            {label: "Brewer - diverging colorbrewer.PuOr", colours: palettes.colorbrewer.PuOr[11]},
-            {label: "Brewer - diverging colorbrewer.RdBu", colours: palettes.colorbrewer.RdBu[11]},
-            {label: "Brewer - diverging colorbrewer.RdYlBu", colours: palettes.colorbrewer.RdYlBu[11]},
+            {label: "Brewer - diverging colorbrewer.BrBG", colours: palettes.brewer.BrBG[11]},
+            {label: "Brewer - diverging colorbrewer.PiYG", colours: palettes.brewer.PiYG[11]},
+            {label: "Brewer - diverging colorbrewer.PRGn", colours: palettes.brewer.PRGn[11]},
+            {label: "Brewer - diverging colorbrewer.PuOr", colours: palettes.brewer.PuOr[11]},
+            {label: "Brewer - diverging colorbrewer.RdBu", colours: palettes.brewer.RdBu[11]},
+            {label: "Brewer - diverging colorbrewer.RdYlBu", colours: palettes.brewer.RdYlBu[11]},
             // Brewer - sequential, multi-hue            
-            {label: "Brewer - sequential, multi-hue colorbrewer.BuGn", colours: palettes.colorbrewer.BuGn[9]},
-            {label: "Brewer - sequential, multi-hue colorbrewer.BuPu", colours: palettes.colorbrewer.BuPu[9]},
-            {label: "Brewer - sequential, multi-hue colorbrewer.GnBu", colours: palettes.colorbrewer.GnBu[9]},
-            {label: "Brewer - sequential, multi-hue colorbrewer.OrRd", colours: palettes.colorbrewer.OrRd[9]},
-            {label: "Brewer - sequential, multi-hue colorbrewer.PuBu", colours: palettes.colorbrewer.PuBu[9]},
-            {label: "Brewer - sequential, multi-hue colorbrewer.PuBuGn", colours: palettes.colorbrewer.PuBuGn[9]},
-            {label: "Brewer - sequential, multi-hue colorbrewer.PuRd", colours: palettes.colorbrewer.PuRd[9]},
-            {label: "Brewer - sequential, multi-hue colorbrewer.RdPu", colours: palettes.colorbrewer.RdPu[9]},
-            {label: "Brewer - sequential, multi-hue colorbrewer.YlGn", colours: palettes.colorbrewer.YlGn[9]},
-            {label: "Brewer - sequential, multi-hue colorbrewer.YlGnBu", colours: palettes.colorbrewer.YlGnBu[9]},
-            {label: "Brewer - sequential, multi-hue colorbrewer.YlOrBr", colours: palettes.colorbrewer.YlOrBr[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.BuGn", colours: palettes.brewer.BuGn[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.BuPu", colours: palettes.brewer.BuPu[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.GnBu", colours: palettes.brewer.GnBu[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.OrRd", colours: palettes.brewer.OrRd[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.PuBu", colours: palettes.brewer.PuBu[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.PuBuGn", colours: palettes.brewer.PuBuGn[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.PuRd", colours: palettes.brewer.PuRd[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.RdPu", colours: palettes.brewer.RdPu[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.YlGn", colours: palettes.brewer.YlGn[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.YlGnBu", colours: palettes.brewer.YlGnBu[9]},
+            {label: "Brewer - sequential, multi-hue colorbrewer.YlOrBr", colours: palettes.brewer.YlOrBr[9]},
             //{label: "Brewer - sequential, multi-hue colorbrewer.YlOrRd", colours: colorbrewer.YlOrRd[9]},            
             // Brewer - sequential, single hue            
-            {label: "Brewer - sequential, single hue colorbrewer.Blues", colours: palettes.colorbrewer.Blues[9]},
-            {label: "Brewer - sequential, single hue colorbrewer.Greens", colours: palettes.colorbrewer.Greens[9]},
-            {label: "Brewer - sequential, single hue colorbrewer.Greys", colours: palettes.colorbrewer.Greys[9]},
-            {label: "Brewer - sequential, single hue colorbrewer.Oranges", colours: palettes.colorbrewer.Oranges[9]},
-            {label: "Brewer - sequential, single hue colorbrewer.Purples", colours: palettes.colorbrewer.Purples[9]},
-            {label: "Brewer - sequential, single hue colorbrewer.Reds", colours: palettes.colorbrewer.Reds[9]}, 
+            {label: "Brewer - sequential, single hue colorbrewer.Blues", colours: palettes.brewer.Blues[9]},
+            {label: "Brewer - sequential, single hue colorbrewer.Greens", colours: palettes.brewer.Greens[9]},
+            {label: "Brewer - sequential, single hue colorbrewer.Greys", colours: palettes.brewer.Greys[9]},
+            {label: "Brewer - sequential, single hue colorbrewer.Oranges", colours: palettes.brewer.Oranges[9]},
+            {label: "Brewer - sequential, single hue colorbrewer.Purples", colours: palettes.brewer.Purples[9]},
+            {label: "Brewer - sequential, single hue colorbrewer.Reds", colours: palettes.brewer.Reds[9]}, 
 
             // lospec - pixel art and video gaming e.g. https://lospec.com/palette-list/cvd8          
             {label: "lospec - cvd8", colours: palettes.lospec.cvd8},

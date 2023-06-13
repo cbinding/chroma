@@ -38,19 +38,22 @@
         window.legends = {}
         // Color schemes from https://colorbrewer2.org/ by Cynthia A. Brewer, Geography, Pennsylvania State University
         // colorbrewer.json obtained from https://github.com/axismaps/colorbrewer/blob/master/export/colorbrewer.json  
-        import colorbrewer from './data/colorbrewer.json' assert { type: 'json' }
-        legends.colorbrewer = colorbrewer
+        import brewer from './data/colorbrewer.json' assert { type: 'json' }
+        legends.brewer = brewer
 
         // OS palettes from https://github.com/OrdnanceSurvey/GeoDataViz-Toolkit/blob/master/Colours/GDV-colour-palettes-v0.7.json        
-        import ospalettes from './data/GDV-colour-palettes-v0.7.json' assert { type: 'json' }
-        legends.os = ospalettes
+        import gdv from './data/GDV-colour-palettes-v0.7.json' assert { type: 'json' }
+        legends.gdv = gdv
+
+        import osmm from './data/osmm-legends.json' assert { type: 'json' }
+        legends.osmm = osmm
 
         // LOSPEC palettes       
         import lospec from './data/lospec-cvd-palettes.json' assert { type: 'json' }
         legends.lospec = lospec
 
         // Contains Peter's palette, CANMORE legend and PastMap legend        
-        import prisma from './data/prisma-palettes-v0.1.json' assert { type: 'json' }
+        import prisma from './data/prisma-legends-v0.1.json' assert { type: 'json' }
         legends.prisma = prisma
     </script>    
     
@@ -88,7 +91,7 @@
         const displayAll = () => {
             // display a specific set of predefined palettes
             const data = [
-                // Peter's 12 colour palette
+                // Peter's 12 colour legend
                 {label: "Peter's legend", items: legends.prisma.peters},
                 // https://canmore.org.uk/site/search/result?view=map&layer=airborne
                 // color values obtained using Chrome eyedropper extension on legend (scroll down)
@@ -99,6 +102,19 @@
             ]  
             data.forEach(legend => displayLegend(legend.items, legend.label))
         }
+
+        // palette is array of hex/rgb colour values e.g. ["#fff3b2","#fed976","#feb24c"]
+        // legend is array of objects e.g. [{colour: "#fff3b2", label: "my label"}]
+        // convert a palette to a legend
+        const paletteToLegend = palette => palette
+            .filter(item => item)
+            .map(item => {
+                return { label: item, colour: item }
+            })
+        // convert a legend to a palette
+        const legendToPalette = legend => legend
+            .filter(item => item.colour)
+            .map(item => item.colour || null)
     </script>
 </head>
 <body onload="displayAll()"></body>
