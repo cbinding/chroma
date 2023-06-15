@@ -1,23 +1,13 @@
 <template>
-  <div>
-    <h1>Legendary..</h1>
-    <LegendDisplay/>
-    <PaletteDisplay/>
-    <!--<ColourPicker/>-->
-    <LegendBuilder/>
-  </div>
+  <LegendBuilder/>  
 </template>
 
 <script>
-import LegendDisplay from "@/components/LegendDisplay"
-import PaletteDisplay from "@/components/PaletteDisplay"
 import LegendBuilder from "@/components/LegendBuilder"
 
 export default {
   name: "App",
   components: {
-    LegendDisplay,
-    PaletteDisplay,
     LegendBuilder
   }
 }
@@ -25,11 +15,11 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 10px;  
 }
 </style>

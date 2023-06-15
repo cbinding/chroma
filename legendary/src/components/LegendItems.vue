@@ -1,14 +1,18 @@
 <template>
-    <div class="legend-items">
-        <label for="legend-items">Items ({{ count }})</label>
-        <button @click.prevent="newItem()" title="add item">New</button>
+    <div>
+        <PaletteDisplay :colours="palette"/>
+        <button @click.prevent="addItem()" title="add item" id="add">Add</button>        
         <ul id="legend-items" class="legend-items">
-            <li v-for="(item, index) in items" :key="index" class="legend-item">
-                <span :style="{ 'background-color': item.colour }" class="legend-item-swatch" :title="item.colour"/>                
-                <span class="legend-item-label">{{ item.label }}</span>
+            <li v-for="(item, index) in items" :key="index">
+                <LegendItem 
+                    class='legend-item'                     
+                    :colour="item.colour" 
+                    :label="item.label" 
+                    @change-colour="changeColour(item.id, $event)" 
+                    @change-label="changeLabel(item.id, $event)"
+                    @delete-item="delItem(item)"/>                
                 <!--<button @click.prevent="moveItemUp()">up</button>-->
-                <!--need option to reorder though?-->
-                <button @click.prevent="delItem(item.id)" title="delete item">x</button>
+                <!--need options to reorder?-->                
             </li>
         </ul>
     </div>
@@ -17,38 +21,30 @@
 <script setup> 
     import { computed } from "vue"
     import { useLegendStore } from "@/stores/useLegendStore" 
+    import LegendItem from "@/components/LegendItem"
+    import PaletteDisplay from "@/components/PaletteDisplay"
 
     const store = useLegendStore() 
     const items = computed(() => store.$state.items)
-    const count = computed(() => items.value.length)
-    const newItem = () => store.newItem()
-    const delItem = id => store.delItem(id)
+    const palette = computed(() => items.value.map(item => item.colour).filter(c => c))
+    const addItem = () => store.newItem()
+    const delItem = item => {
+        if (confirm(`delete "${item.label}" - are you sure?`))
+            store.delItem(item.id)
+    }
+    const changeColour = (id, value) => {store.setItemColour(id, value)}
+    const changeLabel = (id, value) => store.setItemLabel(id, value)
     //const moveItemUp = () => {}
 </script>
 
 <style scoped>
+#add {margin: 3px;}
 .legend-items { 
     margin: 0;
-    padding-left: 0;
+    padding: 0;
     list-style-type: none;
-    border: 1px solid lightgray; 
-}
-.legend-item { 
-    cursor: pointer;
-    margin: 2px;
-    display: flex;
-    justify-content: left;
-    align-items: center;    
-}
-.legend-item-swatch { 
-    display: inline-block;  
-    cursor: pointer;
-    text-align: center; 
-    width: 30px; 
-    height: 20px;
-    margin-right: 3px;
-    border: 1px solid lightgray; 
-}
-.legend-item-label { display: inline-block; width: 400px;}
-.legend-item:hover { background-color: lightgray;}
+    border: 0px solid lightgray;
+    width: 100%;
+}   
+    
 </style>

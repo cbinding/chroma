@@ -91,10 +91,12 @@ export const useLegendStore = defineStore('legend', {
             }             
         },
         newItem() {
-            this.addItem({ colour: "#FFFFFF", label: "new item" })
+            this.addItem({ colour: "#dddddd", label: "new item" })
         },
 
         addItem(item) {
+            // TODO: validate item fields, rgb2hex if necessary
+            // newItem - clone(item)..
             this.items.push({ ...item, id: this.nextID++ })
             //if(item.id)
                 //this.items.push(item)
