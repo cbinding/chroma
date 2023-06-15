@@ -4,7 +4,7 @@
             <label for="legend-title">Title:</label><br>
             <input v-model="title" type="text" id="legend-title" class="field legend-title"/><br>
             <label for="legend-description">Description:</label><br>
-            <input v-model="description" type="text" id="legend-description" class="field legend-description"/><br>
+            <textarea v-model="description" type="text" id="legend-description" class="field legend-description"></textarea><br>
             <label for="legend-creator">Creator:</label><br>
             <input v-model="creator" type="text" id="legend-creator" class="field legend-creator"/><br>
             <label for="legend-contact">Contact:</label><br>
