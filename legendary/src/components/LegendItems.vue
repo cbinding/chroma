@@ -1,11 +1,14 @@
 <template>
     <div>
-        <PaletteDisplay :colours="palette"/>
-        <button @click.prevent="addItem()" title="add item" id="add">Add</button>        
-        <ul id="legend-items" class="legend-items">
-            <li v-for="(item, index) in items" :key="index">
+        <button 
+            class="btn btn-sm btn-outline-secondary mb-2" 
+            @click.prevent="addItem()" 
+            title="add item" 
+            alt="add item"
+            id="add">Add Item</button>        
+        <ul id="legend-items" class="legend-items list-group">
+            <li v-for="(item, index) in items" :key="index" class='list-group-item p-0'>
                 <LegendItem 
-                    class='legend-item'                     
                     :colour="item.colour" 
                     :label="item.label" 
                     @change-colour="changeColour(item.id, $event)" 
@@ -22,11 +25,9 @@
     import { computed } from "vue"
     import { useLegendStore } from "@/stores/useLegendStore" 
     import LegendItem from "@/components/LegendItem"
-    import PaletteDisplay from "@/components/PaletteDisplay"
-
+    
     const store = useLegendStore() 
     const items = computed(() => store.$state.items)
-    const palette = computed(() => items.value.map(item => item.colour).filter(c => c))
     const addItem = () => store.newItem()
     const delItem = item => {
         if (confirm(`delete "${item.label}" - are you sure?`))
@@ -38,12 +39,12 @@
 </script>
 
 <style scoped>
-#add {margin: 3px;}
+#add { margin: 3px; cursor: pointer; }
+
 .legend-items { 
     margin: 0;
     padding: 0;
     list-style-type: none;
-    border: 0px solid lightgray;
     width: 100%;
 }   
     

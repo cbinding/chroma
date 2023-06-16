@@ -16,7 +16,7 @@ export const useLegendStore = defineStore('legend', {
     }),
     getters: {
         itemCount: state => state.items.length,
-        palette: state => state.items.map(item => item.colour).filter(c => c).join()
+        palette: state => state.items.map(item => item.colour).filter(c => c)
     },
     actions: {
         reset() {

@@ -1,11 +1,16 @@
 <template>
     <div class="palette-display">
-        <div>Palette ({{ colours.length }} colours): </div>
+        <div>Palette ({{ colours.length }} colours)</div>
         <span class="swatch" v-for="(colour, index) in colours" 
             :key="index" 
+            :alt="colour"
             :title="colour" 
             :style="{ 'background-color': colour }">&nbsp;</span>
-            <button @click.stop="copyToClipboard" :disabled="!colours.length">Copy to clipboard</button>
+        <button 
+            type="button"
+            title="copy palette to clipboard"
+            @click.stop="copyToClipboard" 
+            :disabled="!colours.length">Copy</button>
     </div>
 </template>
 
@@ -26,12 +31,14 @@
 
 <style scoped>
 .palette-display {
-    width: 100%;
-    display: none;
+    width: 100%;    
 }
+button { 
+    cursor: pointer;
+    display: inline-block;  
+} 
 .swatch { 
     display: inline-block;  
-    cursor: pointer;
     text-align: center; 
     width: 20px; 
     height: 20px;

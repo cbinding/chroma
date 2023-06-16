@@ -1,9 +1,12 @@
 <template>
-  <LegendBuilder/>  
+  <div class="container">
+    <LegendBuilder/>  
+  </div>
 </template>
 
 <script>
 import LegendBuilder from "@/components/LegendBuilder"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 export default {
   name: "App",
@@ -15,11 +18,12 @@ export default {
 
 <style>
 #app {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin: 10px;  
+  margin: 5px;  
 }
+.container { width: 50%;}
+
 </style>

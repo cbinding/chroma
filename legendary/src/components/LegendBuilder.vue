@@ -1,36 +1,58 @@
 <template>    
-    <div class="legend-builder">
-        <div class="header">Legend Builder</div>
-        <div class="menu">
-            <label for="importfile">Import JSON:</label>  
-            <input type="file" 
-                id="importfile" 
-                name="importfile" 
-                accept="application/json"
-                @change.stop="importData"><br>       
-            
-            <label for="exportfile">Export JSON:</label> 
-            <button 
-                id="exportfile" 
-                name="exportfile" 
-                @click.stop="exportData">Choose file</button><br> 
-            
-            <button @click.stop="clearData">Clear All</button><br> <br> 
-        </div>
-        <div class="tab">
-            <!-- Tab links -->
-            <button class="tablinks" @click="openTab($event, 'Legend')" id="defaultOpen">Legend</button>
-            <button class="tablinks" @click="openTab($event, 'Metadata')">Metadata</button><br>
-            <div id="Legend" class="tabcontent">
-                <br clear="all">
-                <LegendItems/>
-            </div>    
-            <div id="Metadata" class="tabcontent">
-                <br clear="all">                
-                <LegendMetadata/>    
+    <div class="card">
+        <div class="card-header text-center fw-bold">Legend Builder</div>
+        <div class="card-body p-2">
+            <div class="input-group input-group-sm p-1">
+                <label for="importfile" class="input-group-text">Import JSON</label>  
+                <input 
+                    type="file" 
+                    id="importfile" 
+                    name="importfile" 
+                    accept="application/json"
+                    class="form-control  form-control-sm"
+                    @change.stop="importData">
             </div>  
-        </div>      
-    </div>
+
+            <div class="input-group input-group-sm p-1">                         
+                <label for="exportfile" class="input-group-text">Export JSON</label> 
+                <button 
+                    type="button"
+                    id="exportfile" 
+                    name="exportfile" 
+                    class="btn btn-sm btn-outline-secondary"
+                    @click.stop="exportData">Choose file</button>
+                <input type="text" class="form-control form-control-sm" disabled/>
+            
+                <button 
+                    type="button"
+                    @click.stop="clearData" 
+                    class="btn btn-sm btn-outline-secondary rounded">Clear All Data</button>            
+            </div>
+
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" @click.stop="openTab($event, 'Items')" id="defaultOpen">Items</a>                       
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" @click.stop="openTab($event, 'Metadata')">Metadata</a>                    
+                </li>
+            </ul>  
+
+            <div id="Items" class="tabcontent bg-light">
+                <LegendItems/>
+            </div> 
+
+            <div id="Metadata" class="tabcontent bg-light">
+                <LegendMetadata/>    
+            </div> 
+            
+            <div class="card-footer text-body-secondary text-center">
+                <small>{{ `${store.$state.title} 
+                    ${store.version ? "- version" : ""} ${store.version}      
+                    (${store.itemCount} item${store.itemCount == 1 ? "": "s"})`}}</small>
+            </div>         
+        </div>
+    </div>        
 </template>
 
 <script setup>
@@ -38,13 +60,12 @@
     import { useLegendStore } from "@/stores/useLegendStore"
     import LegendMetadata from "@/components/LegendMetadata"
     import LegendItems from "@/components/LegendItems"
-
     
-
     const store = useLegendStore() 
+    //const title = store.$state.title
     
     const currentFile = ref("")
-
+    //const palette = computed(() => store.items.value.map(item => item.colour).filter(c => c))
     onMounted(() => {
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
@@ -121,30 +142,30 @@
 </script>
 
 <style scoped>
-.header {
-    font-weight: bold;
+button { cursor: pointer; }
+.header, .footer {
     text-align: center;
     background: lightgray;
-    padding: 6px;
+    padding: 5px;
     margin: 0px;
 }
 .menu {padding: 3px;}
 .legend-builder { 
-    padding: 0px; 
+    padding: 0px;
     border: 1px solid lightgray; 
     width: 500px; 
     text-align: left;
 }
 
 /* Style the tab */
-.tab {
+.tab1 {
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
 }
 
 /* Style the buttons that are used to open the tab content */
-.tablinks {
+.tablinks1 {
   background-color: inherit;
   float: left;
   border: none;
@@ -154,22 +175,12 @@
   transition: 0.3s;
 }
 
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
-}
-
 /* Style the tab content */
 .tabcontent {
-  min-height: 400px;
+  min-height: 500px;
   display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
+  padding: 6px 6px;
+  border: 1px solid lightgray;
   border-top: none;
 }
 
