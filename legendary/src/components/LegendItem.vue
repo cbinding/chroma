@@ -1,28 +1,31 @@
 <template>
-    <div class="input-group input-group-sm flex-nowrap m-0 p-0 border-0">
+    <div class="input-group input-group-sm flex-nowrap m-0 p-0 border">
         <div class="input-group-text p-0 border-0">
             <input 
                 type="color" 
-                class="form-control form-control-sm form-control-color border-0"
+                class="legend-item-colour form-control form-control-sm form-control-color border-0 rounded-0"
                 aria-label="Colour" 
                 :title="colourValue" 
                 :alt="colourValue"
                 v-model="colourValue" 
                 @change="changeColour">
         </div>
+
         <input 
             type="text"
-            class="form-control form-control-sm p-1 border-top-0 border-bottom-0"
+            class="legend-item-label form-control form-control-sm p-1 border-0"
             placeholder="Enter label for the legend item"
             v-model="labelValue" 
             @change="changeLabel"> 
+
         <div class="input-group-text p-0 border-0">
-            <button 
-                type="button"  
-                class="btn btn-sm btn-light"                       
-                title="delete item"
+            <button
+                class="btn btn-sm btn-outline-secondary border-0"    
+                :title="`delete '${label}'`"
                 alt="delete item"
-                @click.prevent="$emit('deleteItem')" >x</button> 
+                @click.prevent="$emit('deleteItem')">
+                <i class="bi bi-x-circle"></i>
+            </button> 
         </div>            
     </div>
 </template>
@@ -57,25 +60,7 @@
 </script>
 
 <style scoped>
-.legend-item {
-    display: flex;
+.legend-item-colour:hover, .legend-item-label:hover { 
+    background-color: lightgray; 
 }
-.legend-item-swatch { 
-    /*display: inline-block;*/  
-    cursor: pointer;
-    border: 0px solid gray;
-    /*width: 30px; 
-    height: 15px;*/
-    margin: 0px 2px;
-    padding: 0px;    
-}
-.legend-item-label { 
-    display: inline-block; 
-    width: 100%;    
-}
-.legend-item-label:hover, .legend-item-swatch:hover {
-    background-color: #F2F3F5; 
-    border-color:  lightgray; 
-}
-
 </style> 

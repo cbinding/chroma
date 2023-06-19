@@ -3,7 +3,7 @@
         <div class="card-header text-center fw-bold">Legend Builder</div>
         <div class="card-body p-2">
             <div class="input-group input-group-sm p-1">
-                <label for="importfile" class="input-group-text">Import JSON</label>  
+                <label for="importfile" class="input-group-text"><i class="bi bi-filetype-json"></i>&nbsp;Import</label>  
                 <input 
                     type="file" 
                     id="importfile" 
@@ -14,7 +14,7 @@
             </div>  
 
             <div class="input-group input-group-sm p-1">                         
-                <label for="exportfile" class="input-group-text">Export JSON</label> 
+                <label for="exportfile" class="input-group-text"><i class="bi bi-filetype-json"></i>&nbsp;Export</label> 
                 <button 
                     type="button"
                     id="exportfile" 
@@ -26,17 +26,16 @@
                 <button 
                     type="button"
                     @click.stop="clearData" 
-                    class="btn btn-sm btn-outline-secondary rounded">Clear All Data</button>            
+                    class="btn btn-sm btn-outline-secondary rounded shadow">
+                    <i class="bi bi-x-circle"></i>&nbsp;Clear All</button>            
             </div>
 
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link" href="#" @click.stop="openTab($event, 'Items')" id="defaultOpen">Items</a>                       
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" @click.stop="openTab($event, 'Metadata')">Metadata</a>                    
-                </li>
-            </ul>  
+            
+
+            <div class="nav nav-tabs">                
+                <a class="nav-link" href="#" @click.stop="openTab($event, 'Items')" id="defaultOpen">Items <span class="badge text-bg-light border rounded-pill">{{ itemCount }}</span></a>                       
+                <a class="nav-link" href="#" @click.stop="openTab($event, 'Metadata')">Metadata</a>   
+            </div>  
 
             <div id="Items" class="tabcontent bg-light">
                 <LegendItems/>
@@ -46,23 +45,24 @@
                 <LegendMetadata/>    
             </div> 
             
-            <div class="card-footer text-body-secondary text-center">
+            <!--<div class="card-footer text-body-secondary text-center">
                 <small>{{ `${store.$state.title} 
                     ${store.version ? "- version" : ""} ${store.version}      
                     (${store.itemCount} item${store.itemCount == 1 ? "": "s"})`}}</small>
-            </div>         
+            </div>   -->      
         </div>
     </div>        
 </template>
 
 <script setup>
-    import { ref, onMounted} from "vue"
+    import { ref, computed, onMounted} from "vue"
     import { useLegendStore } from "@/stores/useLegendStore"
     import LegendMetadata from "@/components/LegendMetadata"
     import LegendItems from "@/components/LegendItems"
     
     const store = useLegendStore() 
-    //const title = store.$state.title
+    
+    const itemCount = computed(() => store.items.length)
     
     const currentFile = ref("")
     //const palette = computed(() => store.items.value.map(item => item.colour).filter(c => c))
@@ -120,23 +120,23 @@
 
     const openTab = (evt, tabName) => {
         // Declare all variables
-        var i, tabcontent, tablinks;
+        var tabcontent, tabs;
 
         // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
+        tabcontent = document.getElementsByClassName("tabcontent")
+        for (let i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none"
         }
 
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        // Get all elements with class="nav-link" and remove the class "active"
+        tabs = document.getElementsByClassName("nav-link")
+        for (let i = 0; i < tabs.length; i++) {
+           tabs[i].className = tabs[i].className.replace(" active", "");
         }
 
         // Show the current tab, and add an "active" class to the button that opened the tab
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
+        document.getElementById(tabName).style.display = "block"
+        evt.currentTarget.className += " active"
     }
 
 </script>

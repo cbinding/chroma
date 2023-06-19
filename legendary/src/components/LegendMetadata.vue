@@ -9,7 +9,7 @@
                     id="legend-title"
                     title="legend title" 
                     placeholder="enter a title for the legend"
-                    class="form-control form-control-sm shadow-sm rounded"/>            
+                    class="form-control form-control-sm shadow-sm rounded hoverable"/>            
             </div>
             <div class="mb-2">
                 <label for="legend-description">Description</label>
@@ -19,7 +19,7 @@
                     id="legend-description" 
                     title="legend description" 
                     placeholder="enter a description for the legend"
-                    class="form-control form-control-sm shadow-sm rounded">
+                    class="form-control form-control-sm shadow-sm rounded hoverable">
                 </textarea>
             </div>
             <div class="mb-2">
@@ -30,7 +30,7 @@
                     id="legend-creator" 
                     title="legend creator" 
                     placeholder="enter name of creator for the legend"
-                    class="form-control form-control-sm shadow-sm rounded"/>
+                    class="form-control form-control-sm shadow-sm rounded hoverable"/>
             </div>
             <div class="mb-2">
                 <label for="legend-contact">Contact</label>
@@ -40,7 +40,7 @@
                     id="legend-contact" 
                     title="legend contact" 
                     placeholder="enter contact details (e.g. email address) for the legend creator"
-                    class="form-control form-control-sm shadow-sm rounded"/>
+                    class="form-control form-control-sm shadow-sm rounded hoverable"/>
             </div>
             <div class="mb-2">
                 <label for="legend-version">Version</label>
@@ -50,7 +50,7 @@
                     id="legend-version" 
                     title="legend version" 
                     placeholder="enter version for the legend"
-                    class="form-control form-control-sm shadow-sm rounded"/>
+                    class="form-control form-control-sm shadow-sm rounded hoverable"/>
             </div>
             <div class="mb-2">
                 <label for="legend-license">License</label>
@@ -60,12 +60,13 @@
                     id="legend-license"
                     title="legend license" 
                     placeholder="enter license details (e.g. licence url) for the legend data" 
-                    class="form-control form-control-sm shadow-sm rounded"/> 
+                    class="form-control form-control-sm shadow-sm rounded hoverable"/> 
             </div>    
             <div class="mb-2">
                 <label for="legend-created">Created</label>
                 <input 
                     id="legend-created" 
+                    aria-disabled="true"
                     class="form-control form-control-sm shadow-sm rounded" 
                     v-model="created" 
                     disabled/> 
@@ -74,6 +75,7 @@
                 <label for="legend-updated">Updated</label>
                 <input
                     id="legend-updated" 
+                    aria-disabled="true"
                     class="form-control form-control-sm shadow-sm rounded" 
                     v-model="updated" 
                     disabled/> 
@@ -144,4 +146,5 @@ label1 {
     padding: 2px;
     font-size: small;
 }
+.hoverable:hover { background: lightgray;}
 </style>

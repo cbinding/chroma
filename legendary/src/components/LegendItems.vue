@@ -5,9 +5,9 @@
             @click.prevent="addItem()" 
             title="add item" 
             alt="add item"
-            id="add">Add Item</button>        
+            id="add"><i class="bi bi-plus-circle"></i>&nbsp;Add Item</button>        
         <ul id="legend-items" class="legend-items list-group">
-            <li v-for="(item, index) in items" :key="index" class='list-group-item p-0'>
+            <li v-for="(item, index) in items" :key="index" class='list-group-item1 p-0'>
                 <LegendItem 
                     :colour="item.colour" 
                     :label="item.label" 
@@ -15,7 +15,7 @@
                     @change-label="changeLabel(item.id, $event)"
                     @delete-item="delItem(item)"/>                
                 <!--<button @click.prevent="moveItemUp()">up</button>-->
-                <!--need options to reorder?-->                
+                <!--need options to reorder?-->                                
             </li>
         </ul>
     </div>
@@ -28,12 +28,13 @@
     
     const store = useLegendStore() 
     const items = computed(() => store.$state.items)
+
     const addItem = () => store.newItem()
     const delItem = item => {
         if (confirm(`delete "${item.label}" - are you sure?`))
             store.delItem(item.id)
     }
-    const changeColour = (id, value) => {store.setItemColour(id, value)}
+    const changeColour = (id, value) => store.setItemColour(id, value)
     const changeLabel = (id, value) => store.setItemLabel(id, value)
     //const moveItemUp = () => {}
 </script>
@@ -46,6 +47,7 @@
     padding: 0;
     list-style-type: none;
     width: 100%;
-}   
-    
+    height: 500px;
+    overflow: scroll;
+}      
 </style>
