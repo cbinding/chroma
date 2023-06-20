@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" 
+  viewBox="0 0 24 24" 
+  preserveAspectRatio="none">  
+  <g>
+  <line stroke-width="20%" stroke="red" x1="0%" y1="10%" x2="100%" y2="10%"></line>
+  <line stroke-width="20%" stroke="orange" x1="0%" y1="30%" x2="100%" y2="30%"></line>
+  <line stroke-width="20%" stroke="yellow" x1="0%" y1="50%" x2="100%" y2="50%"></line>
+  <line stroke-width="20%" stroke="green" x1="0%" y1="70%" x2="100%" y2="70%"></line>
+  <line stroke-width="20%" stroke="blue" x1="0%" y1="90%" x2="100%" y2="90%"></line>  
+  </g>
+  <!--<path d="m0,0 h24 v24 h-24 z"/>-->
+</svg>
