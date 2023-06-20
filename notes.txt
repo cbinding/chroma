@@ -1,0 +1,6 @@
+Created using 
+https://blog.elmah.io/creating-a-documentation-site-with-mkdocs/
+and theme windmill: pip install mkdocs-windmill
+
+Deployed to github pages using 
+https://blog.elmah.io/hosting-a-mkdocs-driven-documentation-site-on-github-pages/
