@@ -1,4 +1,5 @@
-<h1><img src="./img/icon-prisma.svg" width=25px height=25px style="border:0;padding:0;margin:3;"/>PRISMA</h1>
+<h1><img src="./img/icon-prisma.svg" width=40px height=40px style="border:0"/>PRISMA</h1>
+<h3>Presenting Interpreted Survey Mapping for Archaeological data</h3>
 
 ## Introduction
 Colour Vision Deficiency (CVD) in its various forms affects approximately 1 in 12 men and 1 in 200 women and causes varying levels of difficulty in the differentiation of colours – creating an accessibility issue wherever colour may be used to convey information (e.g. on charts or maps). There are various forms of CVD having different severity, the most common condition being a difficulty in distinguishing between reds and greens:
