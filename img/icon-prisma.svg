@@ -1,12 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" 
   viewBox="0 0 24 24" 
-  preserveAspectRatio="none">  
-  <g>
-  <line stroke-width="20%" stroke="red" x1="0%" y1="10%" x2="100%" y2="10%"></line>
-  <line stroke-width="20%" stroke="orange" x1="0%" y1="30%" x2="100%" y2="30%"></line>
-  <line stroke-width="20%" stroke="yellow" x1="0%" y1="50%" x2="100%" y2="50%"></line>
-  <line stroke-width="20%" stroke="green" x1="0%" y1="70%" x2="100%" y2="70%"></line>
-  <line stroke-width="20%" stroke="blue" x1="0%" y1="90%" x2="100%" y2="90%"></line>  
-  </g>
-  <!--<path d="m0,0 h24 v24 h-24 z"/>-->
+  preserveAspectRatio="none"> 
+  <linearGradient id="spectrum" x1="0" x2="1" y1="0" y2="0">
+    <stop offset="0%" stop-color="red" />
+    <stop offset="20%" stop-color="orange"/>
+    <stop offset="40%" stop-color="yellow" />
+    <stop offset="60%" stop-color="green" />
+    <stop offset="80%" stop-color="blue" />
+	  <stop offset="100%" stop-color="purple" />
+  </linearGradient>
+  <linearGradient id="reversed" x1="0" x2="1" y1="0" y2="0">
+    <stop offset="0%" stop-color="purple" />
+    <stop offset="20%" stop-color="blue"/>
+    <stop offset="40%" stop-color="green" />
+    <stop offset="60%" stop-color="yellow" />
+    <stop offset="80%" stop-color="orange" />
+	  <stop offset="100%" stop-color="red" />
+  </linearGradient>
+  <!--<rect x="0" y="0" width="100%" height="100%" rx="10%" fill="black"/>-->
+  <path d="M12 0 L0 24 L24 24 Z" fill="url(#reversed)"/>
+  <!--<text
+    id="logo"
+    x="50%"
+    y="50%"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    fill="url(#spectrum)"
+    font-weight="bold"
+    font-size="150%"
+  >P</text>  -->
 </svg>

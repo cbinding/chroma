@@ -1,0 +1,167 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix schema: <https://schema.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix mons: <http://purl.org/heritagedata/schemes/1/concepts/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix aat: <http://vocab.getty.edu/aat/> .
+@prefix : <https://tempuri/prisma/categories#> .
+
+# TODO: implementing as TriG for additional metadata?
+<https://tempuri/prisma> 
+    dct:title "PResenting Interpreted Survey Mapping for Archaeological data (PRISMA)"@en;
+    dct:creator "Ceri Binding, University of South Wales"@en;
+    dct:created "2023-06-12"^^xsd:date; 
+    dct:modified "2023-06-12"^^xsd:date;
+	dct:description "Map legend categories for Scottish monuments"@en;
+	dct:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> ;
+    dct:subject <https://vocab.getty.edu/aat/300191079>;
+    .
+
+# these braces would then encompass the rest of the content
+# <https://tempuri/prisma> { ...content... }
+
+#<https://tempuri/prisma/model/Legend> 
+#    rdfs:subClassOf skos:Collection;
+#    skos:prefLabel "Legend"@en;
+#    .
+
+#<https://tempuri/prisma/model/LegendItem> 
+#    rdfs:subClassOf skos:Collection;
+#    skos:prefLabel "Legend Item"@en;
+#    .
+
+# Peter's 12 categories for monuments (as nested skos:Collections)
+# overarching element not required, just refer to PRISMA categories
+# but can't then isolate PRISMA categories from other collections
+# can use specialised sub-classes (see Legend & LegendItem above)
+# or simpler - say <x> dct:type is aat:300191079; # keys (texts)
+:monuments a skos:Collection;
+    dct:type aat:300191079; # keys (texts)
+    skos:prefLabel "Monument Categories"@en;
+    skos:member
+        :agricultural,
+        :building,
+        :industrial,
+        :landuse,
+        :military,
+        :religious,
+        :transport,
+        :water,
+        :geology,
+        :control,
+        :miscellaneous,
+        :modern
+        ;
+    .
+
+# collection represents an individual category (member of :monuments)
+:agricultural a skos:Collection;
+    skos:prefLabel "Agricultural"@en;
+    skos:scopeNote "cultivation remains"@en;
+    schema:color "#38A800"; # slight misuse of schema.org property..
+    foaf:depiction <https://tempuri/prisma/resources/category-agricultural.svg>; # use SVG file so depiction is scalable icon (with colour)...
+    skos:member 
+        mons:47,  mons:51,  mons:53, mons:54, mons:56, mons:57, mons:99, mons:501712, mons:507642
+        ;
+    .
+
+:building a skos:Collection;
+    skos:prefLabel "Building"@en;
+    skos:scopeNote "non industrial buildings and settlement"@en;
+    schema:color "#FF0000";
+    foaf:depiction <https://tempuri/prisma/resources/category-building.svg>;
+    skos:member 
+        mons:6, mons:7, mons:8, mons:9, mons:10, mons:11, mons:12, mons:13, mons:14, mons:19, mons:20, mons:21, mons:22, mons:26, mons:27, mons:28, mons:29, mons:31, mons:33, mons:35, mons:40, mons:41, mons:60, mons:62, mons:70, mons:81, mons:100, mons:113, mons:127, mons:152, mons:154, mons:159, mons:160, mons:162, mons:163, mons:164, mons:165, mons:166, mons:179, mons:187, mons:188, mons:190, mons:191, mons:192, mons:194, mons:195, mons:199, mons:221, mons:231, mons:234, mons:240, mons:243, mons:247, mons:263, mons:270, mons:297, mons:298, mons:322, mons:325, mons:341, mons:342, mons:343, mons:344, mons:345, mons:413, mons:422, mons:424, mons:426, mons:432, mons:436, mons:437, mons:438, mons:439, mons:441, mons:442, mons:443, mons:444, mons:445, mons:446, mons:447, mons:449, mons:452, mons:453, mons:454, mons:455, mons:458, mons:462, mons:466, mons:468, mons:472, mons:473, mons:474, mons:475, mons:478, mons:479, mons:481, mons:482, mons:484, mons:486, mons:489, mons:490, mons:494, mons:496, mons:505, mons:517, mons:528, mons:529, mons:530, mons:531, mons:533, mons:535, mons:536, mons:542, mons:544, mons:569, mons:570, mons:573, mons:574, mons:583, mons:585, mons:591, mons:627, mons:1476, mons:1553, mons:1578, mons:1583, mons:1599, mons:1616, mons:1620, mons:1624, mons:2067, mons:2101, mons:2185, mons:500486, mons:500522, mons:500523, mons:500539, mons:500547, mons:500549, mons:500564, mons:500569, mons:500570, mons:500574, mons:500610, mons:500618, mons:500625, mons:500636, mons:500642, mons:500645, mons:500652, mons:500668, mons:500708, mons:500709, mons:500710, mons:500711, mons:500879, mons:500884, mons:500885, mons:501685, mons:501694, mons:502158, mons:502192, mons:502200, mons:502237, mons:502242, mons:502553, mons:502685, mons:502686, mons:503017, mons:503037, mons:503162, mons:503164, mons:503168, mons:503171, mons:503174, mons:503175, mons:503181, mons:503182, mons:503229, mons:503250, mons:503270, mons:503499, mons:503560, mons:503580, mons:503603, mons:503621, mons:503641, mons:503682, mons:503822, mons:503900, mons:504122, mons:504127, mons:504180, mons:504300, mons:504442, mons:504445, mons:504487, mons:504489, mons:504561, mons:504640, mons:504641, mons:504660, mons:504841, mons:504861, mons:504881, mons:505661, mons:505681, mons:505701, mons:506141, mons:506201, mons:506721, mons:508962, mons:510362
+        ;
+    .
+
+:industrial a skos:Collection;
+    skos:prefLabel "Industrial"@en;    
+    skos:scopeNote "Industrial remains"@en;
+    schema:color "#000000";
+    foaf:depiction <https://tempuri/prisma/resources/category-industrial.svg>;
+    skos:member
+        mons:16, mons:17, mons:24, mons:30, mons:32, mons:34, mons:63, mons:64, mons:65, mons:66, mons:67, mons:69, mons:72, mons:73, mons:76, mons:77, mons:78, mons:79, mons:80, mons:130, mons:250, mons:251, mons:252, mons:253, mons:254, mons:255, mons:434, mons:492, mons:629, mons:647, mons:648, mons:649, mons:650, mons:651, mons:652, mons:653, mons:654, mons:655, mons:656, mons:657, mons:658, mons:659, mons:660, mons:661, mons:662, mons:663, mons:664, mons:665, mons:666, mons:667, mons:668, mons:669, mons:670, mons:671, mons:672, mons:673, mons:674, mons:675, mons:677, mons:678, mons:679, mons:680, mons:681, mons:682, mons:683, mons:684, mons:685, mons:686, mons:687, mons:688, mons:689, mons:690, mons:691, mons:692, mons:693, mons:694, mons:695, mons:696, mons:697, mons:698, mons:699, mons:700, mons:701, mons:702, mons:703, mons:704, mons:705, mons:706, mons:707, mons:708, mons:710, mons:711, mons:712, mons:713, mons:714, mons:715, mons:716, mons:717, mons:718, mons:720, mons:721, mons:722, mons:723, mons:725, mons:726, mons:727, mons:728, mons:729, mons:730, mons:731, mons:732, mons:733, mons:734, mons:735, mons:736, mons:737, mons:739, mons:740, mons:741, mons:742, mons:743, mons:744, mons:745, mons:746, mons:747, mons:748, mons:749, mons:750, mons:751, mons:753, mons:754, mons:755, mons:757, mons:758, mons:759, mons:760, mons:761, mons:763, mons:764, mons:765, mons:766, mons:767, mons:768, mons:769, mons:770, mons:771, mons:772, mons:773, mons:774, mons:776, mons:777, mons:778, mons:779, mons:780, mons:781, mons:782, mons:783, mons:785, mons:786, mons:790, mons:791, mons:792, mons:793, mons:794, mons:797, mons:798, mons:799, mons:800, mons:801, mons:803, mons:804, mons:805, mons:807, mons:808, mons:809, mons:810, mons:811, mons:812, mons:814, mons:815, mons:816, mons:817, mons:818, mons:819, mons:820, mons:821, mons:822, mons:823, mons:825, mons:826, mons:827, mons:828, mons:829, mons:830, mons:831, mons:832, mons:833, mons:834, mons:835, mons:836, mons:840, mons:841, mons:842, mons:843, mons:844, mons:845, mons:846, mons:847, mons:848, mons:849, mons:850, mons:851, mons:852, mons:853, mons:854, mons:855, mons:856, mons:857, mons:859, mons:862, mons:864, mons:865, mons:870, mons:872, mons:873, mons:874, mons:875, mons:876, mons:879, mons:883, mons:884, mons:886, mons:890, mons:892, mons:893, mons:895, mons:896, mons:901, mons:902, mons:903, mons:905, mons:906, mons:911, mons:913, mons:914, mons:915, mons:916, mons:917, mons:919, mons:920, mons:921, mons:922, mons:923, mons:924, mons:925, mons:926, mons:927, mons:928, mons:929, mons:931, mons:932, mons:933, mons:934, mons:935, mons:936, mons:937, mons:939, mons:940, mons:942, mons:943, mons:944, mons:945, mons:946, mons:947, mons:948, mons:949, mons:950, mons:952, mons:953, mons:954, mons:955, mons:956, mons:957, mons:958, mons:959, mons:961, mons:962, mons:963, mons:965, mons:966, mons:967, mons:968, mons:969, mons:970, mons:972, mons:976, mons:977, mons:978, mons:980, mons:981, mons:988, mons:989, mons:990, mons:992, mons:993, mons:994, mons:995, mons:996, mons:997, mons:998, mons:999, mons:1002, mons:1006, mons:1007, mons:1009, mons:1010, mons:1011, mons:1012, mons:1013, mons:1014, mons:1016, mons:1017, mons:1018, mons:1019, mons:1021, mons:1022, mons:1023, mons:1024, mons:1025, mons:1026, mons:1027, mons:1028, mons:1029, mons:1030, mons:1031, mons:1032, mons:1033, mons:1034, mons:1035, mons:1036, mons:1037, mons:1038, mons:1039, mons:1040, mons:1041, mons:1042, mons:1043, mons:1044, mons:1048, mons:1050, mons:1051, mons:1053, mons:1055, mons:1058, mons:1063, mons:1064, mons:1067, mons:1068, mons:1070, mons:1071, mons:1072, mons:1073, mons:1074, mons:1075, mons:1079, mons:1080, mons:1081, mons:1082, mons:1083, mons:1084, mons:1086, mons:1087, mons:1088, mons:1098, mons:1099, mons:1103, mons:1104, mons:1105, mons:1106, mons:1107, mons:1109, mons:1110, mons:1112, mons:1113, mons:1114, mons:1115, mons:1116, mons:1117, mons:1118, mons:1119, mons:1120, mons:1122, mons:1123, mons:1125, mons:1133, mons:1134, mons:1135, mons:1140, mons:1143, mons:1148, mons:1149, mons:1153, mons:1155, mons:1156, mons:1157, mons:1159, mons:1165, mons:1167, mons:1169, mons:1170, mons:1173, mons:1176, mons:1177, mons:1182, mons:1184, mons:1186, mons:1188, mons:1189, mons:1191, mons:1192, mons:1193, mons:1194, mons:1195, mons:1196, mons:1197, mons:1198, mons:1199, mons:1200, mons:1201, mons:1203, mons:1204, mons:1207, mons:1209, mons:1210, mons:1211, mons:1212, mons:1213, mons:1214, mons:1215, mons:1216, mons:1217, mons:1218, mons:1219, mons:1220, mons:1221, mons:1222, mons:1223, mons:1224, mons:1225, mons:1226, mons:1227, mons:1228, mons:1229, mons:1230, mons:1231, mons:1232, mons:1233, mons:1234, mons:1235, mons:1236, mons:1237, mons:1238, mons:1239, mons:1241, mons:1242, mons:1243, mons:1245, mons:1248, mons:1249, mons:1250, mons:1252, mons:1253, mons:1255, mons:1256, mons:1258, mons:1259, mons:1261, mons:1263, mons:1264, mons:1265, mons:1266, mons:1267, mons:1268, mons:1269, mons:1271, mons:1273, mons:1274, mons:1275, mons:1276, mons:1277, mons:1278, mons:1279, mons:1280, mons:1283, mons:1284, mons:1285, mons:1287, mons:1288, mons:1291, mons:1293, mons:1294, mons:1296, mons:1299, mons:1300, mons:1301, mons:1303, mons:1304, mons:1306, mons:1307, mons:1308, mons:1309, mons:1310, mons:1311, mons:1313, mons:1317, mons:1318, mons:1319, mons:1320, mons:1322, mons:1324, mons:1346, mons:1348, mons:1352, mons:1356, mons:1357, mons:1359, mons:1360, mons:1361, mons:1362, mons:1363, mons:1364, mons:1365, mons:1367, mons:1368, mons:1369, mons:1371, mons:1373, mons:1377, mons:1379, mons:1380, mons:1384, mons:1387, mons:1842, mons:1971, mons:1976, mons:1981, mons:2014, mons:2015, mons:500518, mons:500527, mons:500528, mons:500533, mons:500541, mons:500542, mons:500543, mons:500560, mons:500561, mons:500566, mons:500567, mons:500568, mons:500612, mons:500616, mons:500629, mons:500634, mons:500641, mons:500655, mons:500673, mons:500698, mons:500700, mons:500736, mons:500819, mons:500840, mons:500921, mons:500963, mons:500983, mons:501004, mons:501055, mons:501655, mons:501659, mons:501660, mons:501661, mons:501663, mons:501677, mons:501678, mons:501680, mons:501681, mons:501682, mons:501683, mons:501688, mons:501691, mons:501696, mons:501704, mons:501706, mons:501710, mons:501715, mons:501724, mons:502107, mons:502116, mons:502119, mons:502129, mons:502130, mons:502142, mons:502143, mons:502146, mons:502148, mons:502153, mons:502154, mons:502172, mons:502177, mons:502178, mons:502186, mons:502194, mons:502199, mons:502218, mons:502259, mons:502261, mons:502298, mons:502431, mons:502787, mons:502995, mons:503179, mons:503184, mons:503185, mons:503187, mons:503312, mons:503394, mons:503803, mons:503804, mons:504140, mons:504181, mons:504182, mons:504243, mons:504344, mons:504363, mons:504366, mons:504368, mons:504882, mons:504883, mons:504884, mons:504901, mons:504902, mons:504903, mons:504904, mons:504905, mons:504906, mons:504907, mons:504908, mons:505521, mons:506341, mons:506361, mons:506581, mons:507382, mons:508562, mons:508563, mons:509022, mons:509162, mons:509242, mons:509362, mons:509462, mons:509822, mons:509989, mons:510046, mons:510302, mons:510602
+        ;
+    .
+
+:landuse a skos:Collection;
+    skos:prefLabel "Land Use"@en;
+    skos:scopeNote "Field boundaries and enclosures"@en;
+    schema:color "#A83800";
+    foaf:depiction <https://tempuri/prisma/resources/category-landuse.svg>;
+    skos:member
+        mons:2, mons:3, mons:4, mons:23, mons:36, mons:37, mons:38, mons:42, mons:43, mons:44, mons:45, mons:49, mons:52, mons:58, mons:59, mons:61, mons:85, mons:87, mons:88, mons:92, mons:93, mons:94, mons:96, mons:97, mons:98, mons:105, mons:106, mons:107, mons:108, mons:109, mons:110, mons:112, mons:115, mons:116, mons:117, mons:118, mons:119, mons:120, mons:121, mons:122, mons:123, mons:128, mons:129, mons:132, mons:133, mons:139, mons:141, mons:142, mons:552, mons:592, mons:1613, mons:500481, mons:500487, mons:500563, mons:500657, mons:500659, mons:500669, mons:500922, mons:501709, mons:502128, mons:502174, mons:502707, mons:503396, mons:504720
+        ;
+    .
+
+:military a skos:Collection;
+    skos:prefLabel "Military"@en;
+    skos:scopeNote "Military and defensive remains"@en;
+    schema:color "#FF73DF";
+    foaf:depiction <https://tempuri/prisma/resources/category-military.svg>;
+    skos:member
+        mons:266, mons:307, mons:308, mons:312, mons:313, mons:314, mons:315, mons:316, mons:327, mons:334, mons:335, mons:353, mons:378, mons:385, mons:389, mons:1383, mons:1424, mons:2322, mons:500509, mons:500608, mons:500799, mons:501714, mons:502048, mons:507902, mons:508162, mons:510262 
+        ;
+    .
+
+:religious a skos:Collection;
+    skos:prefLabel "Religious"@en;
+    skos:scopeNote "Religious, Ritual and Funerary"@en;
+    schema:color "#FFE812";
+    foaf:depiction <https://tempuri/prisma/resources/category-religious.svg>;
+    skos:member
+        mons:418, mons:520, mons:1481, mons:1483, mons:1652, mons:1708, mons:1722, mons:1736, mons:1748, mons:1752, mons:1757, mons:1767, mons:500521, mons:500571, mons:500633, mons:500656, mons:500757, mons:501658, mons:501675, mons:504022, mons:509942
+        ;
+    .
+
+:transport a skos:Collection;
+    skos:prefLabel "Transport"@en;
+    skos:scopeNote "Roads and railways (but not canals??)"@en;
+    schema:color "#4F4F4F";
+    foaf:depiction <https://tempuri/prisma/resources/category-transport.svg>;
+    skos:member
+        mons:709, mons:1395, mons:1396, mons:1786, mons:1787, mons:1788, mons:1789, mons:1791, mons:1792, mons:1793, mons:1794, mons:1795, mons:1806, mons:1816, mons:1824, mons:1833, mons:1834, mons:1837, mons:1895, mons:1896, mons:500478, mons:500479, mons:500516, mons:500517, mons:500524, mons:500525, mons:500526, mons:500530, mons:500559, mons:500565, mons:500583, mons:500585, mons:500586, mons:500619, mons:500696, mons:500942, mons:501676, mons:501708, mons:502095, mons:502890, mons:503807, mons:507743
+        ;
+    .
+
+:water a skos:Collection;
+    skos:prefLabel "Water"@en;
+    skos:scopeNote "Water features from lades and mill ponds to canals?"@en;
+    schema:color "#0070E1";
+    foaf:depiction <https://tempuri/prisma/resources/category-water.svg>;
+    skos:member
+        mons:1251, mons:1257, mons:1260, mons:1870, mons:1875, mons:1876, mons:1973, mons:1986, mons:2009, mons:500529, mons:504220, mons:508622
+        ;
+    .
+
+:geology a skos:Collection;
+    skos:prefLabel "Geology"@en;
+    skos:scopeNote "Natural features"@en;
+    schema:color "#D770E1";
+    foaf:depiction <https://tempuri/prisma/resources/category-geology.svg>;
+    .
+
+:control a skos:Collection;
+    skos:prefLabel "Control"@en;
+    skos:scopeNote "modern features mapped for control"@en;
+    schema:color "#F0F0F0";
+    foaf:depiction <https://tempuri/prisma/resources/category-control.svg>;
+    .
+
+:miscellaneous a skos:Collection;
+    skos:prefLabel "Miscellaneous"@en;
+    skos:scopeNote "other monument types - such as gardens"@en;
+    schema:color "#7AB6F5";
+    foaf:depiction <https://tempuri/prisma/resources/category-miscellaneous.svg>;
+    .
+
+:modern a skos:Collection;
+    skos:prefLabel "Modern"@en;
+    skos:scopeNote "Control and modern features"@en;
+    schema:color "#828282";
+    foaf:depiction <https://tempuri/prisma/resources/category-modern.svg>;
+    .
