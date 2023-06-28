@@ -78,17 +78,17 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1><img src="img/icon-prisma.svg" width=40px height=40px style="border:0"/>Palettes</h1>
+    <h1><img src="../img/icon-prisma.svg" width=40px height=40px style="border:0"/>Palettes</h1>
 
 <p>The colours used to define a legend can seem ambiguous under different CVD conditions. These conditions may be simulated using online tools, or (in the case of Chrome) via the browser 'Developer Tools' menu option (see under Rendering - emulate vision deficiencies).</p>
 <p>For the following colour palette examples, the data sources are listed <a href="/data">here</a>. Hover over individual colour blocks to display the actual colour values.</p>
 <div id="container"></div>
 <script type="module">
-    import brewer from "/data/colorbrewer.json" assert { type: "json" }
-    import gdv from '/data/GDV-colour-palettes-v0.7.json' assert { type: 'json' }
-    import osmm from '/data/osmm-legends.json' assert { type: 'json' }
-    import lospec from '/data/lospec-cvd-palettes.json' assert { type: 'json' }
-    import prisma from '/data/prisma-legends-v0.1.json' assert { type: 'json' }
+    import brewer from "../data/colorbrewer.json" assert { type: "json" }
+    import gdv from '../data/GDV-colour-palettes-v0.7.json' assert { type: 'json' }
+    import osmm from '../data/osmm-legends.json' assert { type: 'json' }
+    import lospec from '../data/lospec-cvd-palettes.json' assert { type: 'json' }
+    import prisma from '../data/prisma-legends-v0.1.json' assert { type: 'json' }
     const palettes = [        
         // Brewer - diverging   
         { label: "Brewer - diverging, BrBG", colours: brewer.BrBG[11] },
