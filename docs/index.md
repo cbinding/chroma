@@ -8,8 +8,8 @@ Colour Vision Deficiency (CVD) in its various forms affects approximately 1 in 1
 * Deuteranopia
 * Tritanopia
 * Achromatopsia
-
-These and other conditions can represent challenges to the clear interpretation of (for example) map keys and heritage sites marked on maps. Although accessibility guidance for public sector web sites does not specifically apply to maps, it is right to consider and address these issues to improve the accessibility of all publicly available online content. The PRISMA project sought to develop suitable colour palettes to alleviate these difficulties for users of HES mapping visualisations (e.g. CANMORE, PastMap). The project was aimed at addressing such accessibility issues in the visualisation of archaeological data, producing as outcomes a set of categories and colour palettes for use in cartographic legends. The categories are associated with colours from a CVD-friendly palette, and represent collections of selected Scottish Monument thesaurus concepts.
+ 
+These and other conditions can represent challenges to the clear interpretation of (for example) map keys and heritage sites marked on maps. Although accessibility guidance for public sector web sites does not specifically apply to maps, it is right to consider and address these issues to improve the accessibility of all publicly available online content. The PRISMA project sought to develop suitable colour palettes to alleviate these difficulties for users of HES mapping visualisations (e.g. CANMORE, PastMap). The project was aimed at addressing such accessibility issues in the visualisation of archaeological data, producing as outcomes a set of categories and colour [palettes](palettes.md) for use  in cartographic [legends](legends.md). The categories are associated with colours from a CVD-friendly palette, and represent collections of selected Scottish Monument thesaurus concepts.
 
 
 

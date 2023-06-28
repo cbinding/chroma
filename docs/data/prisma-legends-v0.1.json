@@ -32,7 +32,7 @@
         { "colour": "#9533ff", "label":"C14 Radiocarbon Dating" },
         { "colour": "#66ff66", "label":"Maritime" }
     ],
-    "peters": [
+    "peters1": [
         { "colour": "rgb(56,168,0)", "label":"Agricultural" },
         { "colour": "rgb(255,0,0)", "label":"Building" },
         { "colour": "rgb(0,0,0)",  "label":"Industrial" },
@@ -45,5 +45,18 @@
         { "colour": "rgb(240,240,240)", "label":"Control" },
         { "colour": "rgb(122,182,245)",  "label":"Miscellaneous" },
         { "colour": "rgb(130,130,130)",  "label":"Modern" }
+    ],
+    "peters2": [
+        { "colour": "#e6194b", "label":"Civil (or) Miscellaneous" },
+        { "colour": "#bfef45", "label":"Control / modern" },
+        { "colour": "#3cb44b", "label":"Cultivation" },
+        { "colour": "#911eb4", "label":"Defence and Military" },
+        { "colour": "#000000", "label":"Industrial and COmmunications" },
+        { "colour": "#8b4513", "label":"Land Use" },
+        { "colour": "#ffe119", "label":"Miscellaneous" },
+        { "colour": "#f58231", "label":"Religious, Ritual and Funerary" },
+        { "colour": "#e6194b", "label":"Settlement" },
+        { "colour": "#285390", "label":"Transport" },
+        { "colour": "#4363d8", "label":"Water" }
     ]
 }

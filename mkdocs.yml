@@ -1,5 +1,10 @@
 site_name: PRISMA
 theme:
   name: windmill
-  custom_dir: custom_theme/ 
+  custom_dir: custom_theme/  
+nav:
+    - Home: index.md
+    - Palettes: palettes.md
+    - Legends: legends.md
+    - Data: data/
   
