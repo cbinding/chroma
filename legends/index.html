@@ -94,6 +94,51 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     ]
 }
 </code></pre>
+<div id="legend-container"></div>
+<script type="module">  
+    const displayLegend = (container, data) => {
+        const legend = document.createElement('div') 
+        const title = document.createElement('h3')
+        title.textContent = data.title || "" 
+        legend.appendChild(title)         
+        data.items.forEach(item => {
+            const row = document.createElement('div')
+            row.style.display="flex"
+            row.style.alignItems="center"
+            const swatch = document.createElement('div')
+            swatch.style.backgroundColor = item.colour
+            swatch.style.display="inline-block"
+            swatch.style.margin="2px"
+            swatch.style.width="40px"
+            swatch.style.height="20px"
+            swatch.style.borderWidth="1px"
+            swatch.style.borderColor="lightgray"
+            swatch.style.borderStyle="solid"
+            swatch.title=item.colour            
+            const label = document.createElement('span')
+            label.textContent = item.label || "" 
+            row.appendChild(swatch)
+            row.appendChild(label)
+            legend.appendChild(row)
+        }) 
+        container.appendChild(legend)  
+    }           
+    // load legend from JSON data file
+    // import legends from '../data/prisma-legends-v0.1.json' assert { type: 'json' }
+    const loadLegendFromJSON = async (path) => {
+        const response = await fetch(path, { headers: { accept: 'application/json' }})
+        return response.json()
+    }
+    // display legend in the container div element
+    const container = document.getElementById("legend-container")
+    loadLegendFromJSON('../data/legend-pastmap.json')
+        .then(data => displayLegend(container, data))
+    loadLegendFromJSON('../data/legend-canmore.json')
+        .then(data => displayLegend(container, data))
+    loadLegendFromJSON('../data/legend-peters.json')
+        .then(data => displayLegend(container, data))
+
+</script>
 
   <br>
     
