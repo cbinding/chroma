@@ -2,10 +2,11 @@
 
 The colours used to define a legend can seem ambiguous under different CVD conditions. These conditions may be simulated using online tools, or (in the case of Chrome) via the browser 'Developer Tools' menu option (see under Rendering - emulate vision deficiencies).
 
-For the following colour palette examples, the data sources are listed [here](/data). Hover over individual colour blocks to display the actual colour values.
+For the following colour palette examples, the data sources are listed [here](../data). Hover over individual colour blocks to display the actual colour values.
 
-<div id="container"></div>
+<div id="palette-container"></div>
 <script type="module">
+    // load palettes from JSON data files
     import brewer from "../data/colorbrewer.json" assert { type: "json" }
     import gdv from '../data/GDV-colour-palettes-v0.7.json' assert { type: 'json' }
     import osmm from '../data/osmm-legends.json' assert { type: 'json' }
@@ -39,7 +40,7 @@ For the following colour palette examples, the data sources are listed [here](/d
         { label: "Brewer - sequential, single hue Purples", colours: brewer.Purples[9] },
         { label: "Brewer - sequential, single hue Reds", colours: brewer.Reds[9] }, 
         // Ordnance Survey - qualitative        
-        { label: "Ordnance Survey - qualitative.lookup.values", colours: Object.values(gdv.qualitative.lookup) },
+        { label: "Ordnance Survey - qualitative.lookup", colours: Object.values(gdv.qualitative.lookup) },
         // Ordnance Survey - diverging
         { label: "Ordnance Survey - diverging.d1", colours: gdv.diverging.d1 },
         { label: "Ordnance Survey - diverging.d2", colours: gdv.diverging.d2 },
@@ -73,8 +74,8 @@ For the following colour palette examples, the data sources are listed [here](/d
         // Peter's 12 colour palettes
         { label: "Peter's legend1", colours: prisma.peters1.map(item => item.colour) },
         { label: "Peter's legend2", colours: prisma.peters2.map(item => item.colour) }        
-    ] 
-    const container = document.getElementById("container")     
+    ]    
+    const container = document.getElementById("palette-container")     
     palettes.forEach(item => {
         const palette = document.createElement('div') 
         palette.style.margin = "20px"

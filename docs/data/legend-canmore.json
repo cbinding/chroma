@@ -1,0 +1,93 @@
+{
+	"title": "CANMORE legend",
+	"description": "Legend colours as displayed on CANMORE map",
+	"creator": "Ceri Binding",
+	"contact": "ceri.binding@southwales.ac.uk",
+	"version": "1.1",
+	"license": "https://creativecommons.org/licenses/by/4.0/",
+	"created": "2023-06-15T13:32:55.526Z",
+	"updated": "2023-06-15T13:33:13.530Z",
+	"items": [
+		{
+			"colour": "#ffccb7",
+			"label": "Geology",
+			"id": 0
+		},
+		{
+			"colour": "#666666",
+			"label": "Industrial",
+			"id": 1
+		},
+		{
+			"colour": "#b3a374",
+			"label": "Land Use",
+			"id": 2
+		},
+		{
+			"colour": "#afd3f9",
+			"label": "Miscellaneous",
+			"id": 3
+		},
+		{
+			"colour": "#b4b4b4",
+			"label": "Modern",
+			"id": 4
+		},
+		{
+			"colour": "#88cb66",
+			"label": "Cultivation",
+			"id": 5
+		},
+		{
+			"colour": "#ffca82",
+			"label": "Religious, Ritual and Funerary",
+			"id": 6
+		},
+		{
+			"colour": "#9976b9",
+			"label": "Roman Period",
+			"id": 7
+		},
+		{
+			"colour": "#da7674",
+			"label": "Settlement",
+			"id": 8
+		},
+		{
+			"colour": "#ff9de8",
+			"label": "Known Site Extent",
+			"id": 9
+		},
+		{
+			"colour": "#f2c7ff",
+			"label": "Discovery Area",
+			"id": 10
+		},
+		{
+			"colour": "#ffff99",
+			"label": "Area of Townscape Character",
+			"id": 11
+		},
+		{
+			"colour": "#668b97",
+			"label": "Canmore Site",
+			"id": 12
+		},
+		{
+			"colour": "#6666ff",
+			"label": "Terrestrial",
+			"id": 13
+		},
+		{
+			"colour": "#9533ff",
+			"label": "C14 Radiocarbon Dating",
+			"id": 14
+		},
+		{
+			"colour": "#66ff66",
+			"label": "Maritime",
+			"id": 15
+		}
+	],
+	"nextID": 16
+}
