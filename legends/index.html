@@ -11,7 +11,7 @@
     
     <link rel="shortcut icon" href="../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Legends - PRISMA</title>
+    <title>Legends - CHROMA</title>
     <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../css/base.css" rel="stylesheet">
@@ -68,7 +68,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1><img src="../img/icon-prisma.svg" width=40px height=40px style="border:0"/>Legends</h1>
+    <h1><img src="../img/icon-chroma.svg" width=40px height=40px style="border:0"/>Legends</h1>
 <p>Legend data may be created and edited using the <a href="https://cbinding.github.io/legendary/" target="_blank" rel="noopener">Legend Builder tool</a>. Legends are saved as JSON files, and consist of a metadata section to record basic metadata about the legend, followed by an array of legend items having a label and a corresponding colour. An example is shown below:</p>
 <pre><code class="language-json">{
     &quot;title&quot;: &quot;CANMORE legend&quot;, 
@@ -124,7 +124,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
         container.appendChild(legend)  
     }           
     // load legend from JSON data file
-    // import legends from '../data/prisma-legends-v0.1.json' assert { type: 'json' }
+    // import legends from '../data/chroma-legends-v0.1.json' assert { type: 'json' }
     const loadLegendFromJSON = async (path) => {
         const response = await fetch(path, { headers: { accept: 'application/json' }})
         return response.json()
