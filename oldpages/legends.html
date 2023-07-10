@@ -53,8 +53,8 @@
         legends.lospec = lospec
 
         // Contains Peter's palette, CANMORE legend and PastMap legend        
-        import prisma from './data/prisma-legends-v0.1.json' assert { type: 'json' }
-        legends.prisma = prisma
+        import chroma from './data/chroma-legends-v0.1.json' assert { type: 'json' }
+        legends.chroma = chroma
     </script>    
     
     <script>                      
@@ -92,13 +92,13 @@
             // display a specific set of predefined palettes
             const data = [
                 // Peter's 12 colour legend
-                {label: "Peter's legend", items: legends.prisma.peters},
+                {label: "Peter's legend", items: legends.chroma.peters},
                 // https://canmore.org.uk/site/search/result?view=map&layer=airborne
                 // color values obtained using Chrome eyedropper extension on legend (scroll down)
-                {label: "Canmore legend", items: legends.prisma.canmore},
+                {label: "Canmore legend", items: legends.chroma.canmore},
                 // https://pastmap.org.uk/map
                 // color values obtained using Chrome eyedropper extension on legend
-                {label: "Pastmap legend", items: legends.prisma.pastmap}                          
+                {label: "Pastmap legend", items: legends.chroma.pastmap}                          
             ]  
             data.forEach(legend => displayLegend(legend.items, legend.label))
         }

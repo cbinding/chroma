@@ -58,8 +58,8 @@
         palettes.lospec = lospec
 
         // Contains Peter's palette, CANMORE legend and PastMap legend        
-        import prisma from './data/prisma-palettes-v0.1.json' assert { type: 'json' }
-        palettes.prisma = prisma
+        import chroma from './data/chroma-palettes-v0.1.json' assert { type: 'json' }
+        palettes.chroma = chroma
     </script>    
     
     <script>                      
@@ -92,13 +92,13 @@
         // display a specific set of predefined palettes
         const displayAll = () => displayPalettes([           
             // Peter's 12 colour palette
-            {label: "Peter's legend", colours: palettes.prisma.peters.map(item => item.colour)},
+            {label: "Peter's legend", colours: palettes.chroma.peters.map(item => item.colour)},
             // https://canmore.org.uk/site/search/result?view=map&layer=airborne
             // color values obtained using Chrome eyedropper extension on legend (scroll down)
-            {label: "Canmore legend", colours: palettes.prisma.canmore.map(item => item.colour)},
+            {label: "Canmore legend", colours: palettes.chroma.canmore.map(item => item.colour)},
             // https://pastmap.org.uk/map
              // color values obtained using Chrome eyedropper extension on legend
-            {label: "Pastmap legend", colours: palettes.prisma.pastmap.map(item => item.colour)},
+            {label: "Pastmap legend", colours: palettes.chroma.pastmap.map(item => item.colour)},
                          
             // Ordnance Survey - qualitative        
             {label: "Ordnance Survey - qualitative.lookup.values", colours: Object.values(palettes.gdv.qualitative.lookup)}, 
