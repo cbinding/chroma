@@ -2,7 +2,7 @@
   viewBox="0 0 24 24" 
   preserveAspectRatio="none">   
   <linearGradient id="reversed" x1="0" x2="1" y1="0" y2="0">
-    <stop offset="0%" stop-color="purple" />
+    <stop offset="0%" stop-color="rebeccapurple" />
     <stop offset="20%" stop-color="blue"/>
     <stop offset="40%" stop-color="green" />
     <stop offset="60%" stop-color="yellow" />
