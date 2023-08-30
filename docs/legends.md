@@ -67,7 +67,7 @@ Legend data may be created and edited using the <a href="https://cbinding.github
 		.then(data => displayLegend(container, data))
 	loadLegendFromJSON('../data/legend-canmore.json')
 		.then(data => displayLegend(container, data))
-	loadLegendFromJSON('../data/legend-peters.json')
+	loadLegendFromJSON('../data/legend-chroma.json')
 		.then(data => displayLegend(container, data))
 	
 </script>

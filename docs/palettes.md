@@ -14,7 +14,7 @@ For the following colour palette examples, the data sources are listed [here](..
     //import chroma from '../data/chroma-legends-v0.1.json' assert { type: 'json' }
     import canmore from '../data/legend-canmore.json' assert { type: 'json' }
     import pastmap from '../data/legend-pastmap.json' assert { type: 'json' }
-    import peters from '../data/legend-peters.json' assert { type: 'json' }
+    import chroma from '../data/legend-chroma.json' assert { type: 'json' }
     const palettes = [        
         // Brewer - diverging   
         { label: "Brewer - diverging, BrBG", colours: brewer.BrBG[11] },
@@ -75,7 +75,7 @@ For the following colour palette examples, the data sources are listed [here](..
         // color values obtained using Chrome eyedropper extension on legend
         { label: "Pastmap legend", colours: pastmap.items.map(item => item.colour) },
         // Peter's 11 colour palette
-        { label: "Peter's legend", colours: peters.items.map(item => item.colour) }          
+        { label: "CHROMA legend", colours: chroma.items.map(item => item.colour) }          
     ]    
     const container = document.getElementById("palette-container")     
     palettes.forEach(item => {
