@@ -70,10 +70,10 @@ For the following colour palette examples, the data sources are listed [here](..
         { label: "lospec - ibmcolorblindsafe", colours: lospec.ibmcolorblindsafe },         
         // https://canmore.org.uk/site/search/result?view=map&layer=airborne
         // color values obtained using Chrome eyedropper extension on legend (scroll down)
-        { label: "Canmore legend", colours: canmore.items.map(item => item.colour) },
+        { label: "CANMORE legend", colours: canmore.items.map(item => item.colour) },
         // https://pastmap.org.uk/map
         // color values obtained using Chrome eyedropper extension on legend
-        { label: "Pastmap legend", colours: pastmap.items.map(item => item.colour) },
+        { label: "PASTMAP legend", colours: pastmap.items.map(item => item.colour) },
         // Peter's 11 colour palette
         { label: "CHROMA legend", colours: chroma.items.map(item => item.colour) }          
     ]    
