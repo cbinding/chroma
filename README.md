@@ -1,3 +1,3 @@
 # CHROMA
 
-The CHROMA project (Cultural Heritage Review Of Mapping Acceccibility) addresses accessibility issues for the visualisation of archaeological data on maps.
+The CHROMA project (Cultural Heritage Review of Mapping Accessibility) addresses accessibility issues for the visualisation of archaeological data on maps.

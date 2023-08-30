@@ -11,16 +11,17 @@
 
 # TODO: implementing as TriG for additional metadata?
 <https://tempuri/chroma> 
-    dct:title "PResenting Interpreted Survey Mapping for Archaeological data (chroma)"@en;
+    dct:title "Cultural Heritage Review of Mapping Accessibility (CHROMA)"@en;
     dct:creator "Ceri Binding, University of South Wales"@en;
+	dct:contributor "Peter McKeague, Historic Environment Scotland"@en;
     dct:created "2023-06-12"^^xsd:date; 
-    dct:modified "2023-06-12"^^xsd:date;
-	dct:description "Map legend categories for Scottish monuments"@en;
+    dct:modified "2023-08-30"^^xsd:date;
+	dct:description "Defining map legend categorisations for Scottish monuments concepts"@en;
 	dct:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> ;
-    dct:subject <https://vocab.getty.edu/aat/300191079>;
+    dct:subject aat:300191079; # keys (texts)
     .
 
-# these braces would then encompass the rest of the content
+# TriG: these braces would encompass the rest of the content
 # <https://tempuri/chroma> { ...content... }
 
 #<https://tempuri/chroma/model/Legend> 
@@ -33,135 +34,141 @@
 #    skos:prefLabel "Legend Item"@en;
 #    .
 
-# Peter's 12 categories for monuments (as nested skos:Collections)
-# overarching element not required, just refer to chroma categories
+# Peter's 11 categories for monuments (as nested skos:Collections)
+# overarching element not required, just refer to chroma categories?
 # but can't then isolate chroma categories from other collections
 # can use specialised sub-classes (see Legend & LegendItem above)
 # or simpler - say <x> dct:type is aat:300191079; # keys (texts)
+# want to avoid introducing 'new' modelling as far as possible
 :monuments a skos:Collection;
     dct:type aat:300191079; # keys (texts)
     skos:prefLabel "Monument Categories"@en;
     skos:member
-        :agricultural,
         :building,
+		:control,        
+		:cultivation, 
+		:defence, 
+		:geology,        		
         :industrial,
         :landuse,
-        :military,
-        :religious,
+		:miscellaneous,        
+		:religious,
         :transport,
-        :water,
-        :geology,
-        :control,
-        :miscellaneous,
-        :modern
+        :water
         ;
     .
-
-# collection represents an individual category (member of :monuments)
-:agricultural a skos:Collection;
-    skos:prefLabel "Agricultural"@en;
-    skos:scopeNote "cultivation remains"@en;
-    schema:color "#38A800"; # slight misuse of schema.org property..
-    foaf:depiction <https://tempuri/chroma/resources/category-agricultural.svg>; # use SVG file so depiction is scalable icon (with colour)...
-    skos:member 
-        mons:47,  mons:51,  mons:53, mons:54, mons:56, mons:57, mons:99, mons:501712, mons:507642
-        ;
-    .
-
+	
+# each sub-collection represents an individual category (member of :monuments)
 :building a skos:Collection;
     skos:prefLabel "Building"@en;
-    skos:scopeNote "non industrial buildings and settlement"@en;
+    skos:altLabel "Settlement, Buildings and related structures"@en;
+    skos:scopeNote "Sites, buildings, structures and features used for permanent, seasonal or temporary accommodation/habitation & related ancillary buildings. Includes commercial, military and religious sites used for residential purposes as well as industrial workplaces."@en;
     schema:color "#FF0000";
     foaf:depiction <https://tempuri/chroma/resources/category-building.svg>;
     skos:member 
-        mons:6, mons:7, mons:8, mons:9, mons:10, mons:11, mons:12, mons:13, mons:14, mons:19, mons:20, mons:21, mons:22, mons:26, mons:27, mons:28, mons:29, mons:31, mons:33, mons:35, mons:40, mons:41, mons:60, mons:62, mons:70, mons:81, mons:100, mons:113, mons:127, mons:152, mons:154, mons:159, mons:160, mons:162, mons:163, mons:164, mons:165, mons:166, mons:179, mons:187, mons:188, mons:190, mons:191, mons:192, mons:194, mons:195, mons:199, mons:221, mons:231, mons:234, mons:240, mons:243, mons:247, mons:263, mons:270, mons:297, mons:298, mons:322, mons:325, mons:341, mons:342, mons:343, mons:344, mons:345, mons:413, mons:422, mons:424, mons:426, mons:432, mons:436, mons:437, mons:438, mons:439, mons:441, mons:442, mons:443, mons:444, mons:445, mons:446, mons:447, mons:449, mons:452, mons:453, mons:454, mons:455, mons:458, mons:462, mons:466, mons:468, mons:472, mons:473, mons:474, mons:475, mons:478, mons:479, mons:481, mons:482, mons:484, mons:486, mons:489, mons:490, mons:494, mons:496, mons:505, mons:517, mons:528, mons:529, mons:530, mons:531, mons:533, mons:535, mons:536, mons:542, mons:544, mons:569, mons:570, mons:573, mons:574, mons:583, mons:585, mons:591, mons:627, mons:1476, mons:1553, mons:1578, mons:1583, mons:1599, mons:1616, mons:1620, mons:1624, mons:2067, mons:2101, mons:2185, mons:500486, mons:500522, mons:500523, mons:500539, mons:500547, mons:500549, mons:500564, mons:500569, mons:500570, mons:500574, mons:500610, mons:500618, mons:500625, mons:500636, mons:500642, mons:500645, mons:500652, mons:500668, mons:500708, mons:500709, mons:500710, mons:500711, mons:500879, mons:500884, mons:500885, mons:501685, mons:501694, mons:502158, mons:502192, mons:502200, mons:502237, mons:502242, mons:502553, mons:502685, mons:502686, mons:503017, mons:503037, mons:503162, mons:503164, mons:503168, mons:503171, mons:503174, mons:503175, mons:503181, mons:503182, mons:503229, mons:503250, mons:503270, mons:503499, mons:503560, mons:503580, mons:503603, mons:503621, mons:503641, mons:503682, mons:503822, mons:503900, mons:504122, mons:504127, mons:504180, mons:504300, mons:504442, mons:504445, mons:504487, mons:504489, mons:504561, mons:504640, mons:504641, mons:504660, mons:504841, mons:504861, mons:504881, mons:505661, mons:505681, mons:505701, mons:506141, mons:506201, mons:506721, mons:508962, mons:510362
-        ;
+		mons:6, mons:7, mons:8, mons:9, mons:10, mons:11, mons:12, mons:13, mons:14, mons:19, mons:20, mons:21, mons:22, mons:26, mons:27, mons:28, mons:29, mons:31, mons:33, mons:35, mons:40, mons:41, mons:60, mons:62, mons:70, mons:81, mons:100, mons:113, mons:127, mons:152, mons:153, mons:154, mons:155, mons:156, mons:157, mons:159, mons:160, mons:161, mons:162, mons:163, mons:164, mons:165, mons:166, mons:167, mons:168, mons:169, mons:170, mons:178, mons:179, mons:181, mons:182, mons:183, mons:185, mons:186, mons:187, mons:188, mons:190, mons:191, mons:192, mons:194, mons:195, mons:197, mons:198, mons:199, mons:200, mons:216, mons:217, mons:221, mons:231, mons:232, mons:233, mons:234, mons:235, mons:236, mons:237, mons:238, mons:240, mons:241, mons:242, mons:243, mons:244, mons:245, mons:246, mons:247, mons:248, mons:257, mons:263, mons:268, mons:269, mons:271, mons:272, mons:297, mons:298, mons:320, mons:322, mons:324, mons:325, mons:341, mons:342, mons:343, mons:344, mons:345, mons:405, mons:406, mons:409, mons:410, mons:411, mons:412, mons:413, mons:414, mons:415, mons:416, mons:417, mons:419, mons:421, mons:422, mons:424, mons:426, mons:432, mons:433, mons:435, mons:436, mons:437, mons:438, mons:439, mons:441, mons:442, mons:443, mons:444, mons:445, mons:446, mons:447, mons:449, mons:452, mons:453, mons:454, mons:455, mons:458, mons:459, mons:461, mons:462, mons:463, mons:464, mons:465, mons:466, mons:467, mons:468, mons:469, mons:470, mons:472, mons:473, mons:474, mons:475, mons:476, mons:477, mons:478, mons:479, mons:480, mons:481, mons:482, mons:484, mons:486, mons:489, mons:490, mons:493, mons:494, mons:496, mons:498, mons:499, mons:500, mons:504, mons:505, mons:507, mons:508, mons:515, mons:517, mons:519, mons:521, mons:524, mons:526, mons:528, mons:529, mons:530, mons:531, mons:532, mons:533, mons:535, mons:536, mons:539, mons:540, mons:541, mons:542, mons:543, mons:544, mons:550, mons:551, mons:569, mons:570, mons:572, mons:573, mons:574, mons:576, mons:582, mons:583, mons:585, mons:591, mons:604, mons:607, mons:623, mons:627, mons:628, mons:633, mons:634, mons:635, mons:636, mons:637, mons:639, mons:641, mons:644, mons:645, mons:1420, mons:1422, mons:1427, mons:1443, mons:1459, mons:1471, mons:1475, mons:1476, mons:1477, mons:1478, mons:1480, mons:1482, mons:1553, mons:1573, mons:1577, mons:1578, mons:1583, mons:1584, mons:1589, mons:1590, mons:1598, mons:1599, mons:1616, mons:1619, mons:1620, mons:1622, mons:1623, mons:1624, mons:1626, mons:1643, mons:1644, mons:1905, mons:1915, mons:1917, mons:1933, mons:2018, mons:2067, mons:2086, mons:2101, mons:2185, mons:500486, mons:500499, mons:500502, mons:500504, mons:500519, mons:500522, mons:500523, mons:500535, mons:500539, mons:500547, mons:500548, mons:500549, mons:500553, mons:500564, mons:500569, mons:500570, mons:500574, mons:500587, mons:500610, mons:500618, mons:500625, mons:500635, mons:500636, mons:500642, mons:500645, mons:500648, mons:500649, mons:500652, mons:500654, mons:500662, mons:500668, mons:500670, mons:500701, mons:500702, mons:500707, mons:500708, mons:500709, mons:500710, mons:500711, mons:500777, mons:500779, mons:500798, mons:500879, mons:500883, mons:500884, mons:500885, mons:501025, mons:501046, mons:501047, mons:501051, mons:501685, mons:501694, mons:501697, mons:501717, mons:502134, mons:502144, mons:502148, mons:502149, mons:502157, mons:502158, mons:502160, mons:502187, mons:502188, mons:502191, mons:502192, mons:502193, mons:502195, mons:502200, mons:502201, mons:502202, mons:502203, mons:502214, mons:502232, mons:502237, mons:502241, mons:502242, mons:502243, mons:502278, mons:502553, mons:502685, mons:502686, mons:502708, mons:502888, mons:502889, mons:502913, mons:502914, mons:502994, mons:503017, mons:503037, mons:503121, mons:503141, mons:503161, mons:503162, mons:503163, mons:503164, mons:503167, mons:503168, mons:503169, mons:503171, mons:503174, mons:503175, mons:503177, mons:503180, mons:503181, mons:503182, mons:503186, mons:503188, mons:503229, mons:503250, mons:503270, mons:503290, mons:503291, mons:503352, mons:503416, mons:503499, mons:503541, mons:503560, mons:503580, mons:503603, mons:503621, mons:503624, mons:503625, mons:503641, mons:503682, mons:503800, mons:503822, mons:503823, mons:503900, mons:503920, mons:504103, mons:504106, mons:504122, mons:504123, mons:504125, mons:504126, mons:504127, mons:504160, mons:504180, mons:504184, mons:504185, mons:504222, mons:504240, mons:504261, mons:504300, mons:504342, mons:504380, mons:504381, mons:504441, mons:504442, mons:504443, mons:504445, mons:504447, mons:504449, mons:504460, mons:504461, mons:504463, mons:504464, mons:504480, mons:504481, mons:504482, mons:504483, mons:504487, mons:504488, mons:504489, mons:504490, mons:504492, mons:504493, mons:504494, mons:504520, mons:504522, mons:504523, mons:504560, mons:504561, mons:504562, mons:504581, mons:504640, mons:504641, mons:504642, mons:504660, mons:504841, mons:504861, mons:504881, mons:505401, mons:505461, mons:505541, mons:505561, mons:505562, mons:505661, mons:505681, mons:505701, mons:505702, mons:505841, mons:505981, mons:506141, mons:506201, mons:506362, mons:506721, mons:508142, mons:508902, mons:508942, mons:508962, mons:509042, mons:510049, mons:510362
+		;
     .
-
-:industrial a skos:Collection;
-    skos:prefLabel "Industrial"@en;    
-    skos:scopeNote "Industrial remains"@en;
-    schema:color "#000000";
-    foaf:depiction <https://tempuri/chroma/resources/category-industrial.svg>;
-    skos:member
-        mons:16, mons:17, mons:24, mons:30, mons:32, mons:34, mons:63, mons:64, mons:65, mons:66, mons:67, mons:69, mons:72, mons:73, mons:76, mons:77, mons:78, mons:79, mons:80, mons:130, mons:250, mons:251, mons:252, mons:253, mons:254, mons:255, mons:434, mons:492, mons:629, mons:647, mons:648, mons:649, mons:650, mons:651, mons:652, mons:653, mons:654, mons:655, mons:656, mons:657, mons:658, mons:659, mons:660, mons:661, mons:662, mons:663, mons:664, mons:665, mons:666, mons:667, mons:668, mons:669, mons:670, mons:671, mons:672, mons:673, mons:674, mons:675, mons:677, mons:678, mons:679, mons:680, mons:681, mons:682, mons:683, mons:684, mons:685, mons:686, mons:687, mons:688, mons:689, mons:690, mons:691, mons:692, mons:693, mons:694, mons:695, mons:696, mons:697, mons:698, mons:699, mons:700, mons:701, mons:702, mons:703, mons:704, mons:705, mons:706, mons:707, mons:708, mons:710, mons:711, mons:712, mons:713, mons:714, mons:715, mons:716, mons:717, mons:718, mons:720, mons:721, mons:722, mons:723, mons:725, mons:726, mons:727, mons:728, mons:729, mons:730, mons:731, mons:732, mons:733, mons:734, mons:735, mons:736, mons:737, mons:739, mons:740, mons:741, mons:742, mons:743, mons:744, mons:745, mons:746, mons:747, mons:748, mons:749, mons:750, mons:751, mons:753, mons:754, mons:755, mons:757, mons:758, mons:759, mons:760, mons:761, mons:763, mons:764, mons:765, mons:766, mons:767, mons:768, mons:769, mons:770, mons:771, mons:772, mons:773, mons:774, mons:776, mons:777, mons:778, mons:779, mons:780, mons:781, mons:782, mons:783, mons:785, mons:786, mons:790, mons:791, mons:792, mons:793, mons:794, mons:797, mons:798, mons:799, mons:800, mons:801, mons:803, mons:804, mons:805, mons:807, mons:808, mons:809, mons:810, mons:811, mons:812, mons:814, mons:815, mons:816, mons:817, mons:818, mons:819, mons:820, mons:821, mons:822, mons:823, mons:825, mons:826, mons:827, mons:828, mons:829, mons:830, mons:831, mons:832, mons:833, mons:834, mons:835, mons:836, mons:840, mons:841, mons:842, mons:843, mons:844, mons:845, mons:846, mons:847, mons:848, mons:849, mons:850, mons:851, mons:852, mons:853, mons:854, mons:855, mons:856, mons:857, mons:859, mons:862, mons:864, mons:865, mons:870, mons:872, mons:873, mons:874, mons:875, mons:876, mons:879, mons:883, mons:884, mons:886, mons:890, mons:892, mons:893, mons:895, mons:896, mons:901, mons:902, mons:903, mons:905, mons:906, mons:911, mons:913, mons:914, mons:915, mons:916, mons:917, mons:919, mons:920, mons:921, mons:922, mons:923, mons:924, mons:925, mons:926, mons:927, mons:928, mons:929, mons:931, mons:932, mons:933, mons:934, mons:935, mons:936, mons:937, mons:939, mons:940, mons:942, mons:943, mons:944, mons:945, mons:946, mons:947, mons:948, mons:949, mons:950, mons:952, mons:953, mons:954, mons:955, mons:956, mons:957, mons:958, mons:959, mons:961, mons:962, mons:963, mons:965, mons:966, mons:967, mons:968, mons:969, mons:970, mons:972, mons:976, mons:977, mons:978, mons:980, mons:981, mons:988, mons:989, mons:990, mons:992, mons:993, mons:994, mons:995, mons:996, mons:997, mons:998, mons:999, mons:1002, mons:1006, mons:1007, mons:1009, mons:1010, mons:1011, mons:1012, mons:1013, mons:1014, mons:1016, mons:1017, mons:1018, mons:1019, mons:1021, mons:1022, mons:1023, mons:1024, mons:1025, mons:1026, mons:1027, mons:1028, mons:1029, mons:1030, mons:1031, mons:1032, mons:1033, mons:1034, mons:1035, mons:1036, mons:1037, mons:1038, mons:1039, mons:1040, mons:1041, mons:1042, mons:1043, mons:1044, mons:1048, mons:1050, mons:1051, mons:1053, mons:1055, mons:1058, mons:1063, mons:1064, mons:1067, mons:1068, mons:1070, mons:1071, mons:1072, mons:1073, mons:1074, mons:1075, mons:1079, mons:1080, mons:1081, mons:1082, mons:1083, mons:1084, mons:1086, mons:1087, mons:1088, mons:1098, mons:1099, mons:1103, mons:1104, mons:1105, mons:1106, mons:1107, mons:1109, mons:1110, mons:1112, mons:1113, mons:1114, mons:1115, mons:1116, mons:1117, mons:1118, mons:1119, mons:1120, mons:1122, mons:1123, mons:1125, mons:1133, mons:1134, mons:1135, mons:1140, mons:1143, mons:1148, mons:1149, mons:1153, mons:1155, mons:1156, mons:1157, mons:1159, mons:1165, mons:1167, mons:1169, mons:1170, mons:1173, mons:1176, mons:1177, mons:1182, mons:1184, mons:1186, mons:1188, mons:1189, mons:1191, mons:1192, mons:1193, mons:1194, mons:1195, mons:1196, mons:1197, mons:1198, mons:1199, mons:1200, mons:1201, mons:1203, mons:1204, mons:1207, mons:1209, mons:1210, mons:1211, mons:1212, mons:1213, mons:1214, mons:1215, mons:1216, mons:1217, mons:1218, mons:1219, mons:1220, mons:1221, mons:1222, mons:1223, mons:1224, mons:1225, mons:1226, mons:1227, mons:1228, mons:1229, mons:1230, mons:1231, mons:1232, mons:1233, mons:1234, mons:1235, mons:1236, mons:1237, mons:1238, mons:1239, mons:1241, mons:1242, mons:1243, mons:1245, mons:1248, mons:1249, mons:1250, mons:1252, mons:1253, mons:1255, mons:1256, mons:1258, mons:1259, mons:1261, mons:1263, mons:1264, mons:1265, mons:1266, mons:1267, mons:1268, mons:1269, mons:1271, mons:1273, mons:1274, mons:1275, mons:1276, mons:1277, mons:1278, mons:1279, mons:1280, mons:1283, mons:1284, mons:1285, mons:1287, mons:1288, mons:1291, mons:1293, mons:1294, mons:1296, mons:1299, mons:1300, mons:1301, mons:1303, mons:1304, mons:1306, mons:1307, mons:1308, mons:1309, mons:1310, mons:1311, mons:1313, mons:1317, mons:1318, mons:1319, mons:1320, mons:1322, mons:1324, mons:1346, mons:1348, mons:1352, mons:1356, mons:1357, mons:1359, mons:1360, mons:1361, mons:1362, mons:1363, mons:1364, mons:1365, mons:1367, mons:1368, mons:1369, mons:1371, mons:1373, mons:1377, mons:1379, mons:1380, mons:1384, mons:1387, mons:1842, mons:1971, mons:1976, mons:1981, mons:2014, mons:2015, mons:500518, mons:500527, mons:500528, mons:500533, mons:500541, mons:500542, mons:500543, mons:500560, mons:500561, mons:500566, mons:500567, mons:500568, mons:500612, mons:500616, mons:500629, mons:500634, mons:500641, mons:500655, mons:500673, mons:500698, mons:500700, mons:500736, mons:500819, mons:500840, mons:500921, mons:500963, mons:500983, mons:501004, mons:501055, mons:501655, mons:501659, mons:501660, mons:501661, mons:501663, mons:501677, mons:501678, mons:501680, mons:501681, mons:501682, mons:501683, mons:501688, mons:501691, mons:501696, mons:501704, mons:501706, mons:501710, mons:501715, mons:501724, mons:502107, mons:502116, mons:502119, mons:502129, mons:502130, mons:502142, mons:502143, mons:502146, mons:502148, mons:502153, mons:502154, mons:502172, mons:502177, mons:502178, mons:502186, mons:502194, mons:502199, mons:502218, mons:502259, mons:502261, mons:502298, mons:502431, mons:502787, mons:502995, mons:503179, mons:503184, mons:503185, mons:503187, mons:503312, mons:503394, mons:503803, mons:503804, mons:504140, mons:504181, mons:504182, mons:504243, mons:504344, mons:504363, mons:504366, mons:504368, mons:504882, mons:504883, mons:504884, mons:504901, mons:504902, mons:504903, mons:504904, mons:504905, mons:504906, mons:504907, mons:504908, mons:505521, mons:506341, mons:506361, mons:506581, mons:507382, mons:508562, mons:508563, mons:509022, mons:509162, mons:509242, mons:509362, mons:509462, mons:509822, mons:509989, mons:510046, mons:510302, mons:510602
-        ;
-    .
-
-:landuse a skos:Collection;
-    skos:prefLabel "Land Use"@en;
-    skos:scopeNote "Field boundaries and enclosures"@en;
-    schema:color "#A83800";
-    foaf:depiction <https://tempuri/chroma/resources/category-landuse.svg>;
-    skos:member
-        mons:2, mons:3, mons:4, mons:23, mons:36, mons:37, mons:38, mons:42, mons:43, mons:44, mons:45, mons:49, mons:52, mons:58, mons:59, mons:61, mons:85, mons:87, mons:88, mons:92, mons:93, mons:94, mons:96, mons:97, mons:98, mons:105, mons:106, mons:107, mons:108, mons:109, mons:110, mons:112, mons:115, mons:116, mons:117, mons:118, mons:119, mons:120, mons:121, mons:122, mons:123, mons:128, mons:129, mons:132, mons:133, mons:139, mons:141, mons:142, mons:552, mons:592, mons:1613, mons:500481, mons:500487, mons:500563, mons:500657, mons:500659, mons:500669, mons:500922, mons:501709, mons:502128, mons:502174, mons:502707, mons:503396, mons:504720
-        ;
-    .
-
-:military a skos:Collection;
-    skos:prefLabel "Military"@en;
-    skos:scopeNote "Military and defensive remains"@en;
-    schema:color "#FF73DF";
-    foaf:depiction <https://tempuri/chroma/resources/category-military.svg>;
-    skos:member
-        mons:266, mons:307, mons:308, mons:312, mons:313, mons:314, mons:315, mons:316, mons:327, mons:334, mons:335, mons:353, mons:378, mons:385, mons:389, mons:1383, mons:1424, mons:2322, mons:500509, mons:500608, mons:500799, mons:501714, mons:502048, mons:507902, mons:508162, mons:510262 
-        ;
-    .
-
-:religious a skos:Collection;
-    skos:prefLabel "Religious"@en;
-    skos:scopeNote "Religious, Ritual and Funerary"@en;
-    schema:color "#FFE812";
-    foaf:depiction <https://tempuri/chroma/resources/category-religious.svg>;
-    skos:member
-        mons:418, mons:520, mons:1481, mons:1483, mons:1652, mons:1708, mons:1722, mons:1736, mons:1748, mons:1752, mons:1757, mons:1767, mons:500521, mons:500571, mons:500633, mons:500656, mons:500757, mons:501658, mons:501675, mons:504022, mons:509942
-        ;
-    .
-
-:transport a skos:Collection;
-    skos:prefLabel "Transport"@en;
-    skos:scopeNote "Roads and railways (but not canals??)"@en;
-    schema:color "#4F4F4F";
-    foaf:depiction <https://tempuri/chroma/resources/category-transport.svg>;
-    skos:member
-        mons:709, mons:1395, mons:1396, mons:1786, mons:1787, mons:1788, mons:1789, mons:1791, mons:1792, mons:1793, mons:1794, mons:1795, mons:1806, mons:1816, mons:1824, mons:1833, mons:1834, mons:1837, mons:1895, mons:1896, mons:500478, mons:500479, mons:500516, mons:500517, mons:500524, mons:500525, mons:500526, mons:500530, mons:500559, mons:500565, mons:500583, mons:500585, mons:500586, mons:500619, mons:500696, mons:500942, mons:501676, mons:501708, mons:502095, mons:502890, mons:503807, mons:507743
-        ;
-    .
-
-:water a skos:Collection;
-    skos:prefLabel "Water"@en;
-    skos:scopeNote "Water features from lades and mill ponds to canals?"@en;
-    schema:color "#0070E1";
-    foaf:depiction <https://tempuri/chroma/resources/category-water.svg>;
-    skos:member
-        mons:1251, mons:1257, mons:1260, mons:1870, mons:1875, mons:1876, mons:1973, mons:1986, mons:2009, mons:500529, mons:504220, mons:508622
-        ;
-    .
-
-:geology a skos:Collection;
-    skos:prefLabel "Geology"@en;
-    skos:scopeNote "Natural features"@en;
-    schema:color "#D770E1";
-    foaf:depiction <https://tempuri/chroma/resources/category-geology.svg>;
-    .
-
+	
 :control a skos:Collection;
     skos:prefLabel "Control"@en;
     skos:scopeNote "modern features mapped for control"@en;
     schema:color "#F0F0F0";
     foaf:depiction <https://tempuri/chroma/resources/category-control.svg>;
+	skos:member
+		mons:1566, mons:1572, mons:500501, mons:501093, mons:510082
+		;
+    .
+	
+:cultivation a skos:Collection;
+    skos:prefLabel "Agricultural"@en;
+    skos:scopeNote "cultivation remains"@en;
+    schema:color "#38A800"; # slight misuse of schema.org property..
+    foaf:depiction <https://tempuri/chroma/resources/category-agricultural.svg>; # use SVG file so depiction is scalable icon (with colour)...
+    skos:member 
+        mons:47, mons:51, mons:53, mons:54, mons:56, mons:57, mons:503820
+        ;
+    .
+
+:defence a skos:Collection;
+    skos:prefLabel "Military"@en;
+    skos:altLabel "Defence and Military"@en;
+    skos:scopeNote "Sites, buildings, structures & features primarily used for defensive or military purposes. Includes both sites primarily used for military purposes (Roman and artillery Forts) and civil defence sites, weapons stores, training sites, military signals & active defence structures"@en;
+    schema:color "#FF73DF";
+    foaf:depiction <https://tempuri/chroma/resources/category-military.svg>;
+    skos:member
+		mons:184, mons:260, mons:266, mons:270, mons:277, mons:279, mons:280, mons:281, mons:282, mons:283, mons:284, mons:285, mons:286, mons:287, mons:289, mons:290, mons:292, mons:293, mons:294, mons:295, mons:296, mons:299, mons:300, mons:301, mons:302, mons:303, mons:304, mons:306, mons:307, mons:308, mons:309, mons:310, mons:312, mons:313, mons:314, mons:315, mons:316, mons:327, mons:328, mons:329, mons:330, mons:331, mons:332, mons:333, mons:334, mons:335, mons:336, mons:337, mons:338, mons:339, mons:340, mons:346, mons:347, mons:348, mons:349, mons:350, mons:351, mons:353, mons:354, mons:355, mons:357, mons:358, mons:359, mons:360, mons:361, mons:362, mons:363, mons:364, mons:365, mons:366, mons:367, mons:368, mons:369, mons:371, mons:372, mons:373, mons:374, mons:377, mons:378, mons:380, mons:381, mons:382, mons:383, mons:385, mons:386, mons:387, mons:389, mons:390, mons:391, mons:392, mons:394, mons:395, mons:397, mons:398, mons:399, mons:400, mons:401, mons:402, mons:403, mons:404, mons:793, mons:1383, mons:1423, mons:1424, mons:1914, mons:2303, mons:2322, mons:500482, mons:500508, mons:500509, mons:500515, mons:500608, mons:500609, mons:500626, mons:500653, mons:500799, mons:500800, mons:500839, mons:500984, mons:500985, mons:501052, mons:501686, mons:501687, mons:501700, mons:501703, mons:501714, mons:502047, mons:502048, mons:502049, mons:502050, mons:502121, mons:502131, mons:502133, mons:502171, mons:502230, mons:502892, mons:503172, mons:503173, mons:503183, mons:503540, mons:503860, mons:504021, mons:506381, mons:507362, mons:507383, mons:507402, mons:507902, mons:507903, mons:507905, mons:508162, mons:508163, mons:508522, mons:509043, mons:509044, mons:509045, mons:509046, mons:509622, mons:510142, mons:510262 
+		;
+    .
+	
+:geology a skos:Collection;
+    skos:prefLabel "Geology"@en;
+    skos:scopeNote "Natural features"@en;
+    schema:color "#D770E1";
+    foaf:depiction <https://tempuri/chroma/resources/category-geology.svg>;
+	skos:member
+		mons:500477, mons:502660, mons:507243, mons:509482
+		;
+	.
+
+:industrial a skos:Collection;
+    skos:prefLabel "Industrial"@en;    
+    skos:scopeNote "Sites, buildings, structures & features related to the extraction, processing & manufacture of finished goods. Includes structures associated with the supply, storage &/or transmission of power and communications installations. Can include small scale rural industries"@en;
+    schema:color "#000000";
+    foaf:depiction <https://tempuri/chroma/resources/category-industrial.svg>;
+    skos:member
+		mons:16, mons:17, mons:24, mons:30, mons:32, mons:34, mons:63, mons:64, mons:65, mons:66, mons:67, mons:68, mons:69, mons:72, mons:73, mons:76, mons:77, mons:78, mons:79, mons:80, mons:130, mons:135, mons:149, mons:250, mons:251, mons:252, mons:253, mons:254, mons:255, mons:434, mons:492, mons:629, mons:647, mons:648, mons:649, mons:650, mons:651, mons:652, mons:653, mons:654, mons:655, mons:656, mons:657, mons:658, mons:659, mons:660, mons:661, mons:662, mons:663, mons:664, mons:665, mons:666, mons:667, mons:668, mons:669, mons:670, mons:671, mons:672, mons:673, mons:674, mons:675, mons:677, mons:678, mons:679, mons:680, mons:681, mons:682, mons:683, mons:684, mons:685, mons:686, mons:687, mons:688, mons:689, mons:690, mons:691, mons:692, mons:693, mons:694, mons:695, mons:696, mons:697, mons:698, mons:699, mons:700, mons:701, mons:702, mons:703, mons:704, mons:705, mons:706, mons:707, mons:708, mons:710, mons:711, mons:712, mons:713, mons:714, mons:715, mons:716, mons:717, mons:718, mons:720, mons:721, mons:722, mons:723, mons:725, mons:726, mons:727, mons:728, mons:729, mons:730, mons:731, mons:732, mons:733, mons:734, mons:735, mons:736, mons:737, mons:739, mons:740, mons:741, mons:742, mons:743, mons:744, mons:745, mons:746, mons:747, mons:748, mons:749, mons:750, mons:751, mons:753, mons:754, mons:755, mons:757, mons:758, mons:759, mons:760, mons:761, mons:763, mons:764, mons:765, mons:766, mons:767, mons:768, mons:769, mons:770, mons:771, mons:772, mons:773, mons:774, mons:776, mons:777, mons:778, mons:779, mons:780, mons:781, mons:782, mons:783, mons:784, mons:785, mons:786, mons:790, mons:791, mons:792, mons:794, mons:797, mons:798, mons:799, mons:800, mons:801, mons:803, mons:804, mons:805, mons:807, mons:808, mons:809, mons:810, mons:811, mons:812, mons:814, mons:815, mons:816, mons:817, mons:818, mons:819, mons:820, mons:821, mons:822, mons:823, mons:825, mons:826, mons:827, mons:828, mons:829, mons:830, mons:831, mons:832, mons:833, mons:834, mons:835, mons:836, mons:840, mons:841, mons:842, mons:843, mons:844, mons:845, mons:846, mons:847, mons:848, mons:849, mons:850, mons:851, mons:852, mons:853, mons:854, mons:855, mons:856, mons:857, mons:859, mons:862, mons:864, mons:865, mons:870, mons:872, mons:873, mons:874, mons:875, mons:876, mons:879, mons:883, mons:884, mons:886, mons:890, mons:892, mons:893, mons:895, mons:896, mons:901, mons:902, mons:903, mons:905, mons:906, mons:911, mons:913, mons:914, mons:915, mons:916, mons:917, mons:919, mons:920, mons:921, mons:922, mons:923, mons:924, mons:925, mons:926, mons:927, mons:928, mons:929, mons:931, mons:932, mons:933, mons:934, mons:935, mons:936, mons:937, mons:939, mons:940, mons:942, mons:943, mons:944, mons:945, mons:946, mons:947, mons:948, mons:949, mons:950, mons:952, mons:953, mons:954, mons:955, mons:956, mons:957, mons:958, mons:959, mons:961, mons:962, mons:963, mons:965, mons:966, mons:967, mons:968, mons:969, mons:970, mons:972, mons:976, mons:977, mons:978, mons:980, mons:981, mons:988, mons:989, mons:990, mons:992, mons:993, mons:994, mons:995, mons:996, mons:997, mons:998, mons:999, mons:1002, mons:1006, mons:1007, mons:1009, mons:1010, mons:1011, mons:1012, mons:1013, mons:1014, mons:1016, mons:1017, mons:1018, mons:1019, mons:1021, mons:1022, mons:1023, mons:1024, mons:1025, mons:1026, mons:1027, mons:1028, mons:1029, mons:1030, mons:1031, mons:1032, mons:1033, mons:1034, mons:1035, mons:1036, mons:1037, mons:1038, mons:1039, mons:1040, mons:1041, mons:1042, mons:1043, mons:1044, mons:1048, mons:1050, mons:1051, mons:1053, mons:1055, mons:1058, mons:1063, mons:1064, mons:1067, mons:1068, mons:1070, mons:1071, mons:1072, mons:1073, mons:1074, mons:1075, mons:1079, mons:1080, mons:1081, mons:1082, mons:1083, mons:1084, mons:1086, mons:1087, mons:1088, mons:1098, mons:1099, mons:1103, mons:1104, mons:1105, mons:1106, mons:1107, mons:1109, mons:1110, mons:1112, mons:1113, mons:1114, mons:1115, mons:1116, mons:1117, mons:1118, mons:1119, mons:1120, mons:1122, mons:1123, mons:1125, mons:1133, mons:1134, mons:1135, mons:1140, mons:1143, mons:1148, mons:1149, mons:1153, mons:1155, mons:1156, mons:1157, mons:1159, mons:1165, mons:1167, mons:1169, mons:1170, mons:1173, mons:1176, mons:1177, mons:1182, mons:1184, mons:1186, mons:1188, mons:1189, mons:1191, mons:1192, mons:1193, mons:1194, mons:1195, mons:1196, mons:1197, mons:1198, mons:1199, mons:1200, mons:1201, mons:1203, mons:1204, mons:1207, mons:1209, mons:1210, mons:1211, mons:1212, mons:1213, mons:1214, mons:1215, mons:1216, mons:1217, mons:1218, mons:1219, mons:1220, mons:1221, mons:1222, mons:1223, mons:1224, mons:1225, mons:1226, mons:1227, mons:1228, mons:1229, mons:1230, mons:1231, mons:1232, mons:1233, mons:1234, mons:1235, mons:1236, mons:1237, mons:1238, mons:1239, mons:1241, mons:1242, mons:1243, mons:1245, mons:1248, mons:1249, mons:1250, mons:1252, mons:1253, mons:1255, mons:1256, mons:1258, mons:1259, mons:1261, mons:1263, mons:1264, mons:1265, mons:1266, mons:1267, mons:1268, mons:1269, mons:1271, mons:1272, mons:1273, mons:1274, mons:1275, mons:1276, mons:1277, mons:1278, mons:1279, mons:1280, mons:1283, mons:1284, mons:1285, mons:1287, mons:1288, mons:1291, mons:1293, mons:1294, mons:1296, mons:1299, mons:1300, mons:1301, mons:1303, mons:1304, mons:1306, mons:1307, mons:1308, mons:1309, mons:1310, mons:1311, mons:1313, mons:1317, mons:1318, mons:1319, mons:1320, mons:1322, mons:1324, mons:1346, mons:1348, mons:1352, mons:1356, mons:1357, mons:1359, mons:1360, mons:1361, mons:1362, mons:1363, mons:1364, mons:1365, mons:1367, mons:1368, mons:1369, mons:1371, mons:1373, mons:1377, mons:1379, mons:1380, mons:1384, mons:1387, mons:1398, mons:1445, mons:1446, mons:1799, mons:1801, mons:1802, mons:1803, mons:1804, mons:1805, mons:1807, mons:1808, mons:1809, mons:1842, mons:1919, mons:1920, mons:1927, mons:1941, mons:1946, mons:1947, mons:1948, mons:1949, mons:1966, mons:1971, mons:1972, mons:1974, mons:1976, mons:1978, mons:1980, mons:1981, mons:1988, mons:1995, mons:1998, mons:2014, mons:2015, mons:2019, mons:2092, mons:2176, mons:500503, mons:500518, mons:500527, mons:500528, mons:500533, mons:500541, mons:500542, mons:500543, mons:500557, mons:500560, mons:500561, mons:500566, mons:500567, mons:500568, mons:500584, mons:500612, mons:500616, mons:500629, mons:500634, mons:500641, mons:500655, mons:500671, mons:500673, mons:500694, mons:500697, mons:500698, mons:500700, mons:500736, mons:500819, mons:500840, mons:500880, mons:500881, mons:500920, mons:500921, mons:500963, mons:500983, mons:501004, mons:501054, mons:501055, mons:501655, mons:501659, mons:501660, mons:501661, mons:501663, mons:501665, mons:501677, mons:501678, mons:501680, mons:501681, mons:501682, mons:501683, mons:501688, mons:501691, mons:501696, mons:501704, mons:501706, mons:501710, mons:501715, mons:501719, mons:501720, mons:501721, mons:501724, mons:502094, mons:502107, mons:502114, mons:502116, mons:502119, mons:502129, mons:502130, mons:502135, mons:502142, mons:502143, mons:502146, mons:502148, mons:502153, mons:502154, mons:502172, mons:502177, mons:502178, mons:502179, mons:502185, mons:502186, mons:502194, mons:502199, mons:502218, mons:502259, mons:502261, mons:502298, mons:502431, mons:502787, mons:502995, mons:503179, mons:503184, mons:503185, mons:503187, mons:503312, mons:503394, mons:503803, mons:503804, mons:503940, mons:504100, mons:504140, mons:504181, mons:504182, mons:504243, mons:504344, mons:504363, mons:504366, mons:504368, mons:504540, mons:504820, mons:504882, mons:504883, mons:504884, mons:504901, mons:504902, mons:504903, mons:504904, mons:504905, mons:504906, mons:504907, mons:504908, mons:505521, mons:506341, mons:506361, mons:506581, mons:507382, mons:507642, mons:508562, mons:508563, mons:509022, mons:509162, mons:509242, mons:509362, mons:509462, mons:509822, mons:509989, mons:510046, mons:510302, mons:510382, mons:510602 
+		;
+	.
+
+:landuse a skos:Collection;
+    skos:prefLabel "Land Use"@en;
+    skos:scopeNote "Sites, structures, features associated with the agricultural landscape. Includes both enclosures and boundaries as well as other obstructing features associated with the agricultural landscape but excluding cultivation remains. Includes farm based processing of foodstuffs & storage of agricultural produce."@en;
+    schema:color "#A83800";
+    foaf:depiction <https://tempuri/chroma/resources/category-landuse.svg>;
+    skos:member
+		mons:2, mons:3, mons:4, mons:23, mons:36, mons:37, mons:38, mons:42, mons:43, mons:44, mons:45, mons:49, mons:52, mons:58, mons:59, mons:61, mons:71, mons:85, mons:86, mons:87, mons:88, mons:91, mons:92, mons:93, mons:94, mons:96, mons:97, mons:98, mons:99, mons:105, mons:106, mons:107, mons:108, mons:109, mons:110, mons:112, mons:115, mons:116, mons:117, mons:118, mons:119, mons:120, mons:121, mons:122, mons:123, mons:124, mons:128, mons:129, mons:132, mons:133, mons:136, mons:137, mons:138, mons:139, mons:140, mons:141, mons:142, mons:143, mons:144, mons:146, mons:147, mons:317, mons:318, mons:382, mons:383, mons:408, mons:483, mons:485, mons:506, mons:552, mons:553, mons:554, mons:555, mons:556, mons:558, mons:578, mons:579, mons:592, mons:595, mons:1409, mons:1419, mons:1431, mons:1433, mons:1448, mons:1449, mons:1450, mons:1451, mons:1452, mons:1453, mons:1454, mons:1457, mons:1458, mons:1460, mons:1461, mons:1462, mons:1463, mons:1464, mons:1465, mons:1466, mons:1467, mons:1468, mons:1469, mons:1515, mons:1516, mons:1517, mons:1518, mons:1520, mons:1521, mons:1523, mons:1524, mons:1525, mons:1528, mons:1532, mons:1533, mons:1534, mons:1564, mons:1574, mons:1575, mons:1576, mons:1580, mons:1613, mons:1738, mons:1836, mons:1900, mons:1918, mons:1929, mons:1958, mons:2315, mons:500481, mons:500487, mons:500505, mons:500506, mons:500520, mons:500531, mons:500554, mons:500562, mons:500563, mons:500582, mons:500607, mons:500622, mons:500624, mons:500637, mons:500657, mons:500659, mons:500669, mons:500692, mons:500703, mons:500704, mons:500780, mons:500859, mons:500860, mons:500922, mons:501696, mons:501707, mons:501709, mons:501712, mons:501716, mons:502108, mons:502109, mons:502128, mons:502132, mons:502174, mons:502179, mons:502190, mons:502687, mons:502706, mons:502707, mons:503332, mons:503373, mons:503396, mons:503417, mons:503500, mons:503600, mons:503960, mons:504280, mons:504340, mons:504360, mons:504361, mons:504500, mons:504720, mons:504824, mons:505381, mons:505384, mons:505621, mons:506101, mons:506621, mons:506762, mons:507882, mons:508022, mons:508242, mons:508624, mons:509182, mons:510242        
+		;
     .
 
 :miscellaneous a skos:Collection;
     skos:prefLabel "Miscellaneous"@en;
-    skos:scopeNote "other monument types - such as gardens"@en;
+    skos:scopeNote "Sites, building, structures & features not otherwise assigned to values in the map legend. Includes communications structures"@en;
     schema:color "#7AB6F5";
     foaf:depiction <https://tempuri/chroma/resources/category-miscellaneous.svg>;
+	skos:member
+		mons:150, mons:151, mons:171, mons:173, mons:174, mons:175, mons:176, mons:177, mons:180, mons:193, mons:196, mons:209, mons:211, mons:213, mons:215, mons:216, mons:218, mons:219, mons:220, mons:222, mons:223, mons:225, mons:226, mons:227, mons:228, mons:229, mons:230, mons:258, mons:261, mons:262, mons:265, mons:267, mons:273, mons:274, mons:275, mons:276, mons:537, mons:546, mons:547, mons:560, mons:578, mons:579, mons:584, mons:586, mons:588, mons:589, mons:590, mons:593, mons:594, mons:599, mons:600, mons:602, mons:606, mons:608, mons:609, mons:610, mons:611, mons:612, mons:619, mons:622, mons:640, mons:1263, mons:1425, mons:1430, mons:1447, mons:1499, mons:1504, mons:1505, mons:1535, mons:1536, mons:1556, mons:1560, mons:1569, mons:1571, mons:1572, mons:1587, mons:1588, mons:1603, mons:1617, mons:1621, mons:1625, mons:1627, mons:1628, mons:1634, mons:1636, mons:1637, mons:1638, mons:1640, mons:1642, mons:1840, mons:1857, mons:1897, mons:1898, mons:1899, mons:1901, mons:1902, mons:1903, mons:1904, mons:1906, mons:1907, mons:1908, mons:1909, mons:1910, mons:1911, mons:1913, mons:1925, mons:1930, mons:1931, mons:1932, mons:1934, mons:1935, mons:1938, mons:1939, mons:1940, mons:1942, mons:1943, mons:1944, mons:1945, mons:1950, mons:1951, mons:1952, mons:1954, mons:1957, mons:500476, mons:500488, mons:500495, mons:500496, mons:500497, mons:500498, mons:500546, mons:500611, mons:500613, mons:500621, mons:500623, mons:500638, mons:500639, mons:500640, mons:500643, mons:500644, mons:500646, mons:500672, mons:500705, mons:500706, mons:500737, mons:500899, mons:501005, mons:501006, mons:501049, mons:501073, mons:501074, mons:501657, mons:501664, mons:501679, mons:501684, mons:501689, mons:501690, mons:501693, mons:501695, mons:501702, mons:501705, mons:501713, mons:501722, mons:501723, mons:501805, mons:501806, mons:502087, mons:502127, mons:502140, mons:502151, mons:502213, mons:502219, mons:502258, mons:502318, mons:502595, mons:502640, mons:502893, mons:502953, mons:503176, mons:503178, mons:503374, mons:503478, mons:503543, mons:503561, mons:503581, mons:503602, mons:503640, mons:503642, mons:503660, mons:503700, mons:503740, mons:503809, mons:503810, mons:503840, mons:504020, mons:504221, mons:504223, mons:504241, mons:504260, mons:504284, mons:504341, mons:504368, mons:504371, mons:504620, mons:504740, mons:505361, mons:505501, mons:505781, mons:506121, mons:506122, mons:506281, mons:507186, mons:507187, mons:507222, mons:507522, mons:507523, mons:507582, mons:507583, mons:507584, mons:508002, mons:508102, mons:508145, mons:508202, mons:508542, mons:508982, mons:509122, mons:509142, mons:509202, mons:509203, mons:509222, mons:509243, mons:509245, mons:509282, mons:509442, mons:509502, mons:509503, mons:509504, mons:509505, mons:509522, mons:509523, mons:510022, mons:510024, mons:510742, mons:510762, mons:510763 
+		;
     .
 
-:modern a skos:Collection;
-    skos:prefLabel "Modern"@en;
-    skos:scopeNote "Control and modern features"@en;
-    schema:color "#828282";
-    foaf:depiction <https://tempuri/chroma/resources/category-modern.svg>;
+:religious a skos:Collection;
+    skos:prefLabel "Religious"@en;
+    skos:altLabel "Religious, Ritual and Funerary"@en;
+    skos:scopeNote "Sites, buildings, structures & features related to the practice of rituals & religious beliefs, including funerary rites. Includes ancillary buildings, structures & features of uncertain use, which are thought to be 'ritual' (eg. hill figures)."@en;
+    schema:color "#FFE812";
+    foaf:depiction <https://tempuri/chroma/resources/category-religious.svg>;
+    skos:member
+		mons:189, mons:201, mons:203, mons:205, mons:206, mons:207, mons:210, mons:418, mons:520, mons:580, mons:638, mons:1481, mons:1483, mons:1487, mons:1488, mons:1491, mons:1494, mons:1495, mons:1497, mons:1500, mons:1501, mons:1502, mons:1503, mons:1526, mons:1527, mons:1537, mons:1558, mons:1559, mons:1646, mons:1647, mons:1649, mons:1652, mons:1653, mons:1656, mons:1658, mons:1659, mons:1660, mons:1663, mons:1664, mons:1665, mons:1667, mons:1668, mons:1669, mons:1670, mons:1671, mons:1672, mons:1673, mons:1674, mons:1675, mons:1677, mons:1678, mons:1679, mons:1684, mons:1692, mons:1693, mons:1695, mons:1697, mons:1698, mons:1699, mons:1700, mons:1701, mons:1702, mons:1703, mons:1708, mons:1709, mons:1710, mons:1711, mons:1712, mons:1713, mons:1714, mons:1715, mons:1716, mons:1717, mons:1718, mons:1719, mons:1720, mons:1721, mons:1722, mons:1723, mons:1724, mons:1725, mons:1726, mons:1727, mons:1730, mons:1733, mons:1734, mons:1735, mons:1736, mons:1739, mons:1740, mons:1741, mons:1742, mons:1743, mons:1744, mons:1745, mons:1746, mons:1747, mons:1748, mons:1749, mons:1750, mons:1751, mons:1752, mons:1753, mons:1754, mons:1755, mons:1757, mons:1758, mons:1759, mons:1760, mons:1762, mons:1763, mons:1765, mons:1766, mons:1767, mons:1768, mons:1769, mons:1770, mons:1771, mons:1772, mons:1773, mons:1774, mons:1921, mons:1922, mons:1923, mons:2316, mons:2317, mons:500521, mons:500534, mons:500571, mons:500631, mons:500633, mons:500656, mons:500733, mons:500757, mons:501658, mons:501675, mons:501701, mons:501718, mons:502025, mons:502026, mons:502028, mons:502029, mons:502030, mons:502031, mons:502032, mons:502034, mons:502115, mons:502145, mons:502156, mons:502189, mons:502217, mons:502637, mons:502662, mons:502663, mons:502664, mons:502868, mons:503166, mons:504022, mons:504282, mons:506301, mons:507302, mons:507322, mons:507323, mons:507543, mons:507850, mons:507922, mons:508222, mons:508602, mons:509842, mons:509864, mons:509942, mons:509990, mons:510122, mons:510123, mons:510604, mons:510622       
+        ;
     .
+
+:transport a skos:Collection;
+    skos:prefLabel "Transport"@en;
+    skos:scopeNote "Sites, buildings, structures & features related to the conveyance of goods &/or passengers. Includes man-made routeways, mechanical structures & some vehicle types where it is deemed necessary to record such as monuments."@en;
+    schema:color "#4F4F4F";
+    foaf:depiction <https://tempuri/chroma/resources/category-transport.svg>;
+    skos:member
+		mons:264, mons:393, mons:613, mons:614, mons:709, mons:1390, mons:1391, mons:1392, mons:1393, mons:1395, mons:1396, mons:1399, mons:1400, mons:1401, mons:1404, mons:1405, mons:1406, mons:1435, mons:1437, mons:1438, mons:1579, mons:1655, mons:1775, mons:1776, mons:1777, mons:1778, mons:1780, mons:1781, mons:1782, mons:1783, mons:1784, mons:1785, mons:1786, mons:1787, mons:1788, mons:1789, mons:1791, mons:1792, mons:1793, mons:1794, mons:1795, mons:1796, mons:1798, mons:1806, mons:1810, mons:1811, mons:1812, mons:1813, mons:1814, mons:1815, mons:1816, mons:1817, mons:1819, mons:1820, mons:1821, mons:1822, mons:1823, mons:1824, mons:1825, mons:1826, mons:1827, mons:1828, mons:1830, mons:1831, mons:1832, mons:1833, mons:1834, mons:1837, mons:1839, mons:1841, mons:1846, mons:1847, mons:1849, mons:1850, mons:1851, mons:1852, mons:1853, mons:1854, mons:1856, mons:1860, mons:1861, mons:1862, mons:1864, mons:1865, mons:1867, mons:1869, mons:1874, mons:1887, mons:1895, mons:1896, mons:1955, mons:2378, mons:500478, mons:500479, mons:500516, mons:500517, mons:500524, mons:500525, mons:500526, mons:500530, mons:500544, mons:500559, mons:500565, mons:500583, mons:500585, mons:500586, mons:500619, mons:500627, mons:500647, mons:500696, mons:500699, mons:500713, mons:500778, mons:500942, mons:500944, mons:501676, mons:501708, mons:502095, mons:502113, mons:502186, mons:502196, mons:502197, mons:502216, mons:502234, mons:502890, mons:503015, mons:503016, mons:503395, mons:503601, mons:503681, mons:503683, mons:503801, mons:503807, mons:503821, mons:503841, mons:504124, mons:504201, mons:504245, mons:504301, mons:505061, mons:505942, mons:506241, mons:507342, mons:507422, mons:507742, mons:507743, mons:508082, mons:509962, mons:510642 		
+		;
+    .
+
+:water a skos:Collection;
+    skos:prefLabel "Water"@en;
+    skos:scopeNote "Sites, building, structures & features associated with the supply & drainage of water & the disposal of sewage and waste water. Includes bodies of water, waterways & associated ancillary structures"@en;
+    schema:color "#0070E1";
+    foaf:depiction <https://tempuri/chroma/resources/category-water.svg>;
+    skos:member
+		mons:172, mons:587, mons:1251, mons:1253, mons:1257, mons:1260, mons:1436, mons:1439, mons:1600, mons:1870, mons:1875, mons:1876, mons:1959, mons:1960, mons:1961, mons:1967, mons:1968, mons:1969, mons:1973, mons:1983, mons:1984, mons:1986, mons:1987, mons:1989, mons:1993, mons:2000, mons:2001, mons:2005, mons:2006, mons:2007, mons:2009, mons:2010, mons:500529, mons:500558, mons:500614, mons:500693, mons:500983, mons:502118, mons:502953, mons:502954, mons:503394, mons:503805, mons:504024, mons:504120, mons:504121, mons:504140, mons:504200, mons:504220, mons:504302, mons:504343, mons:505383, mons:507762, mons:508622       
+        ;
+    .
+	
