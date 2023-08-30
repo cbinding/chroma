@@ -1,1 +1,24 @@
-{"title":"Peter's legend","description":"Proposed colours for Peter's categories","creator":"Ceri Binding","contact":"ceri.binding@southwales.ac.uk","version":"1.0","license":"https://creativecommons.org/licenses/by/4.0/","created":"2023-06-20T12:08:58.568Z","updated":"2023-06-20T12:12:28.568Z","items":[{"colour":"#38a800","label":"Agricultural","id":0},{"colour":"#ff0000","label":"Building","id":1},{"colour":"#000000","label":"Industrial","id":2},{"colour":"#a83800","label":"Landuse","id":3},{"colour":"#ff73df","label":"Military","id":4},{"colour":"#ffe812","label":"Religious","id":5},{"colour":"#4f4f4f","label":"Transport","id":6},{"colour":"#0070e1","label":"Water","id":7},{"colour":"#d770e1","label":"Geology","id":8},{"colour":"#f0f0f0","label":"Control","id":9},{"colour":"#7ab6f5","label":"Miscellaneous","id":10},{"colour":"#828282","label":"Modern","id":11}],"nextID":12}
+{
+  "title": "Peter's legend",
+  "description": "Proposed colours for Peter's categories",
+  "creator": "Ceri Binding",
+  "contact": "ceri.binding@southwales.ac.uk",
+  "version": "1.0",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "created": "2023-06-20T12:08:58.568Z",
+  "updated": "2023-08-30T14:35:20.212Z",
+  "items": [
+    { "colour": "#ff0000", "label": "Building", "id": 0 },
+    { "colour": "#f0f0f0", "label": "Control", "id": 1 },    
+    { "colour": "#38a800", "label": "Cultivation", "id": 2 }, 
+    { "colour": "#ff73df", "label": "Defence", "id": 3 },
+    { "colour": "#d770e1", "label": "Geology", "id": 4 },
+    { "colour": "#000000", "label": "Industrial", "id": 5 },
+    { "colour": "#a83800", "label": "Landuse", "id": 6 },
+    { "colour": "#7ab6f5", "label": "Miscellaneous", "id": 7 },
+    { "colour": "#ffe812", "label": "Religious", "id": 8 },
+    { "colour": "#4f4f4f", "label": "Transport", "id": 9 },
+    { "colour": "#0070e1", "label": "Water", "id": 10 }    
+  ],
+  "nextID": 11
+}

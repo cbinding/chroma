@@ -51,11 +51,11 @@
         { "colour": "#bfef45", "label":"Control / modern" },
         { "colour": "#3cb44b", "label":"Cultivation" },
         { "colour": "#911eb4", "label":"Defence and Military" },
-        { "colour": "#000000", "label":"Industrial and COmmunications" },
+        { "colour": "#000000", "label":"Industrial and Communications" },
         { "colour": "#8b4513", "label":"Land Use" },
         { "colour": "#ffe119", "label":"Miscellaneous" },
         { "colour": "#f58231", "label":"Religious, Ritual and Funerary" },
-        { "colour": "#e6194b", "label":"Settlement" },
+        { "colour": "#e6194b", "label":"Settlement" },        
         { "colour": "#285390", "label":"Transport" },
         { "colour": "#4363d8", "label":"Water" }
     ]

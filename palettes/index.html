@@ -89,7 +89,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     import gdv from '../data/GDV-colour-palettes-v0.7.json' assert { type: 'json' }
     import osmm from '../data/osmm-legends.json' assert { type: 'json' }
     import lospec from '../data/lospec-cvd-palettes.json' assert { type: 'json' }
-    import chroma from '../data/chroma-legends-v0.1.json' assert { type: 'json' }
+    //import chroma from '../data/chroma-legends-v0.1.json' assert { type: 'json' }
+    import canmore from '../data/legend-canmore.json' assert { type: 'json' }
+    import pastmap from '../data/legend-pastmap.json' assert { type: 'json' }
+    import peters from '../data/legend-peters.json' assert { type: 'json' }
     const palettes = [        
         // Brewer - diverging   
         { label: "Brewer - diverging, BrBG", colours: brewer.BrBG[11] },
@@ -145,13 +148,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
         { label: "lospec - ibmcolorblindsafe", colours: lospec.ibmcolorblindsafe },         
         // https://canmore.org.uk/site/search/result?view=map&layer=airborne
         // color values obtained using Chrome eyedropper extension on legend (scroll down)
-        { label: "Canmore legend", colours: chroma.canmore.map(item => item.colour) },
+        { label: "Canmore legend", colours: canmore.items.map(item => item.colour) },
         // https://pastmap.org.uk/map
         // color values obtained using Chrome eyedropper extension on legend
-        { label: "Pastmap legend", colours: chroma.pastmap.map(item => item.colour) },
-        // Peter's 12 colour palettes
-        { label: "Peter's legend1", colours: chroma.peters1.map(item => item.colour) },
-        { label: "Peter's legend2", colours: chroma.peters2.map(item => item.colour) }        
+        { label: "Pastmap legend", colours: pastmap.items.map(item => item.colour) },
+        // Peter's 11 colour palette
+        { label: "Peter's legend", colours: peters.items.map(item => item.colour) }          
     ]    
     const container = document.getElementById("palette-container")     
     palettes.forEach(item => {
