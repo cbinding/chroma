@@ -45,14 +45,14 @@
     skos:prefLabel "Monument Categories"@en;
     skos:member
         :building,
-		:control,        
-		:cultivation, 
-		:defence, 
-		:geology,        		
+	:control,        
+	:cultivation, 
+	:defence, 
+	:geology,        		
         :industrial,
         :landuse,
-		:miscellaneous,        
-		:religious,
+	:miscellaneous,        
+	:religious,
         :transport,
         :water
         ;
@@ -81,7 +81,7 @@
     .
 	
 :cultivation a skos:Collection;
-    skos:prefLabel "Agricultural"@en;
+    skos:prefLabel "Cultivation"@en;
     skos:scopeNote "cultivation remains"@en;
     schema:color "#38A800"; # slight misuse of schema.org property..
     foaf:depiction <https://tempuri/chroma/resources/category-agricultural.svg>; # use SVG file so depiction is scalable icon (with colour)...
@@ -91,7 +91,7 @@
     .
 
 :defence a skos:Collection;
-    skos:prefLabel "Military"@en;
+    skos:prefLabel "Defence"@en;
     skos:altLabel "Defence and Military"@en;
     skos:scopeNote "Sites, buildings, structures & features primarily used for defensive or military purposes. Includes both sites primarily used for military purposes (Roman and artillery Forts) and civil defence sites, weapons stores, training sites, military signals & active defence structures"@en;
     schema:color "#FF73DF";
