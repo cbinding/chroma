@@ -60,6 +60,7 @@
 	
 # each sub-collection represents an individual category (member of :monuments)
 :building a skos:Collection;
+    dct:type aat:300435413;
     skos:prefLabel "Building"@en;
     skos:altLabel "Settlement, Buildings and related structures"@en;
     skos:scopeNote "Sites, buildings, structures and features used for permanent, seasonal or temporary accommodation/habitation & related ancillary buildings. Includes commercial, military and religious sites used for residential purposes as well as industrial workplaces."@en;
@@ -71,6 +72,7 @@
     .
 	
 :control a skos:Collection;
+    dct:type aat:300435413;
     skos:prefLabel "Control"@en;
     skos:scopeNote "modern features mapped for control"@en;
     schema:color "#F0F0F0";
@@ -81,6 +83,7 @@
     .
 	
 :cultivation a skos:Collection;
+    dct:type aat:300435413;
     skos:prefLabel "Cultivation"@en;
     skos:scopeNote "cultivation remains"@en;
     schema:color "#38A800"; # slight misuse of schema.org property..
@@ -91,6 +94,7 @@
     .
 
 :defence a skos:Collection;
+    dct:type aat:300435413;
     skos:prefLabel "Defence"@en;
     skos:altLabel "Defence and Military"@en;
     skos:scopeNote "Sites, buildings, structures & features primarily used for defensive or military purposes. Includes both sites primarily used for military purposes (Roman and artillery Forts) and civil defence sites, weapons stores, training sites, military signals & active defence structures"@en;
@@ -102,6 +106,7 @@
     .
 	
 :geology a skos:Collection;
+    dct:type aat:300435413;
     skos:prefLabel "Geology"@en;
     skos:scopeNote "Natural features"@en;
     schema:color "#D770E1";
@@ -112,6 +117,7 @@
 	.
 
 :industrial a skos:Collection;
+    dct:type aat:300435413;
     skos:prefLabel "Industrial"@en;    
     skos:scopeNote "Sites, buildings, structures & features related to the extraction, processing & manufacture of finished goods. Includes structures associated with the supply, storage &/or transmission of power and communications installations. Can include small scale rural industries"@en;
     schema:color "#000000";
@@ -122,6 +128,7 @@
 	.
 
 :landuse a skos:Collection;
+    dct:type aat:300435413;
     skos:prefLabel "Land Use"@en;
     skos:scopeNote "Sites, structures, features associated with the agricultural landscape. Includes both enclosures and boundaries as well as other obstructing features associated with the agricultural landscape but excluding cultivation remains. Includes farm based processing of foodstuffs & storage of agricultural produce."@en;
     schema:color "#A83800";
@@ -132,6 +139,7 @@
     .
 
 :miscellaneous a skos:Collection;
+    dct:type aat:300435413;
     skos:prefLabel "Miscellaneous"@en;
     skos:scopeNote "Sites, building, structures & features not otherwise assigned to values in the map legend. Includes communications structures"@en;
     schema:color "#7AB6F5";
@@ -142,6 +150,7 @@
     .
 
 :religious a skos:Collection;
+    dct:type aat:300435413;
     skos:prefLabel "Religious"@en;
     skos:altLabel "Religious, Ritual and Funerary"@en;
     skos:scopeNote "Sites, buildings, structures & features related to the practice of rituals & religious beliefs, including funerary rites. Includes ancillary buildings, structures & features of uncertain use, which are thought to be 'ritual' (eg. hill figures)."@en;
@@ -153,6 +162,7 @@
     .
 
 :transport a skos:Collection;
+    dct:type aat:300435413;
     skos:prefLabel "Transport"@en;
     skos:scopeNote "Sites, buildings, structures & features related to the conveyance of goods &/or passengers. Includes man-made routeways, mechanical structures & some vehicle types where it is deemed necessary to record such as monuments."@en;
     schema:color "#4F4F4F";
@@ -163,6 +173,7 @@
     .
 
 :water a skos:Collection;
+    dct:type aat:300435413;
     skos:prefLabel "Water"@en;
     skos:scopeNote "Sites, building, structures & features associated with the supply & drainage of water & the disposal of sewage and waste water. Includes bodies of water, waterways & associated ancillary structures"@en;
     schema:color "#0070E1";
