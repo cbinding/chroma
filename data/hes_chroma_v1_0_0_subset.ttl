@@ -10,7 +10,8 @@
 @prefix aat: <http://vocab.getty.edu/aat/> .
 
 # TODO: implementing as TriG for additional metadata?
-:   dct:title "Cultural Heritage Review of Mapping Accessibility (CHROMA)"@en;
+<https://raw.githubusercontent.com/cbinding/chroma/refs/heads/main/data/hes_chroma_v1_0_0_subset.ttl>
+    dct:title "Cultural Heritage Review of Mapping Accessibility (CHROMA)"@en;
     dct:creator "Ceri Binding, University of South Wales"@en;
 	dct:contributor "Peter McKeague, Historic Environment Scotland"@en;
     dct:created "2023-06-12"^^xsd:date; 
