@@ -1,20 +1,20 @@
-<h1><img src="../img/icon-chroma.svg" width=40px height=40px style="border:0"/>Palettes</h1>
+<h1><img src="./img/icon-chroma.svg" width=40px height=40px style="border:0"/>Palettes</h1>
 
 The colours used to define a legend can seem ambiguous under different CVD conditions. These conditions may be simulated using online tools, or (in the case of Chrome) via the browser 'Developer Tools' menu option (see under Rendering - emulate vision deficiencies).
 
-For the following colour palette examples, the data sources are listed [here](../data). Hover over individual colour blocks to display the actual colour values.
+For the following colour palette examples, the data sources are listed [here](./data). Hover over individual colour blocks to display the actual colour values.
 
 <div id="palette-container"></div>
 <script type="module">
     // load palettes from JSON data files
-    import brewer from "../data/colorbrewer.json" assert { type: "json" }
-    import gdv from '../data/GDV-colour-palettes-v0.7.json' assert { type: 'json' }
-    import osmm from '../data/osmm-legends.json' assert { type: 'json' }
-    import lospec from '../data/lospec-cvd-palettes.json' assert { type: 'json' }
-    //import chroma from '../data/chroma-legends-v0.1.json' assert { type: 'json' }
-    import canmore from '../data/legend-canmore.json' assert { type: 'json' }
-    import pastmap from '../data/legend-pastmap.json' assert { type: 'json' }
-    import chroma from '../data/legend-chroma.json' assert { type: 'json' }
+    import brewer from "./data/colorbrewer.json" assert { type: "json" }
+    import gdv from './data/GDV-colour-palettes-v0.7.json' assert { type: 'json' }
+    import osmm from './data/osmm-legends.json' assert { type: 'json' }
+    import lospec from './data/lospec-cvd-palettes.json' assert { type: 'json' }
+    //import chroma from './data/chroma-legends-v0.1.json' assert { type: 'json' }
+    import canmore from './data/legend-canmore.json' assert { type: 'json' }
+    import pastmap from './data/legend-pastmap.json' assert { type: 'json' }
+    import chroma from './data/legend-chroma.json' assert { type: 'json' }
     const palettes = [        
         // Brewer - diverging   
         { label: "Brewer - diverging, BrBG", colours: brewer.BrBG[11] },
