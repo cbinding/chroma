@@ -8,20 +8,103 @@
 @prefix mons: <http://purl.org/heritagedata/schemes/1/concepts/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix aat: <http://vocab.getty.edu/aat/> .
+@prefix coll: <http://purl.org/heritagedata/schemes/1/collections/> .
+
 
 <https://raw.githubusercontent.com/cbinding/chroma/refs/heads/main/data/hes_chroma_v1_0_0.ttl>
     dct:title "Cultural Heritage Review of Mapping Accessibility (CHROMA)"@en;
     dct:creator "Ceri Binding, University of South Wales"@en;
 	dct:contributor "Peter McKeague, Historic Environment Scotland"@en;
     dct:created "2023-06-12"^^xsd:date; 
-    dct:modified "2026-04-15"^^xsd:date;
-    owl:versionInfo "1.0.0"^^xsd:string;
+    dct:modified "2026-04-08"^^xsd:date;
+    owl:versionInfo "0.9.0"^^xsd:string;
 	dct:description "Defines map legend categorisations for Scottish monuments concepts"@en;
 	dct:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> ;
     dct:subject aat:300191079; # keys (texts)
     .
 
-# HES CHROMA categories for monuments (as nested skos:Collections)
+# TODO: implementing as TriG for additional metadata?
+# TriG: these braces would encompass the rest of the content
+# <http://purl.org/heritagedata/hes-chroma> { ...content... }
+
+#<https://tempuri/chroma/model/Legend> 
+#    rdfs:subClassOf skos:Collection;
+#    skos:prefLabel "Legend"@en;
+#    .
+
+#<https://tempuri/chroma/model/LegendItem> 
+#    rdfs:subClassOf skos:Collection;
+#    skos:prefLabel "Legend Item"@en;
+#    .
+
+<https://tempuri/chroma/model/hexValue>
+    a rdf:Property;
+    rdfs:subPropertyOf rdf:value;
+    rdfs:label "HEX value"@en;
+    skos:prefLabel "HEX value"@en;
+    rdfs:range xsd:string;
+    rdfs:comment "Hexadecimal colour string in #RRGGBB format."@en;
+    .
+
+<https://tempuri/chroma/model/rgbValue>
+    a rdf:Property;
+    rdfs:subPropertyOf rdf:value;
+    rdfs:label "RGB value"@en;
+    skos:prefLabel "RGB value"@en;
+    rdfs:range xsd:string;
+    rdfs:comment "RGB colour values as 'R, G, B' (0-255)."@en;
+    .
+
+# Color class
+<https://tempuri/chroma/model/Color>
+    a rdfs:Class;
+    rdfs:label "Color"@en;
+    rdfs:comment "A colour resource used in map legends (hex, rgb, etc.)."@en;
+    .
+
+# linking property for map legend colours
+<https://tempuri/chroma/model/hasColor>
+    a rdf:Property;
+    rdfs:label "hasColor"@en;
+    rdfs:domain skos:Collection;
+    rdfs:range <https://tempuri/chroma/model/Color>;
+    rdfs:comment "Links a legend/category to a Color resource."@en;
+    .
+
+# Example colour resource for buildings
+chroma:color-building a <https://tempuri/chroma/model/Color>;
+    <https://tempuri/chroma/model/hexValue> "#F96288";
+    <https://tempuri/chroma/model/rgbValue> "249, 98, 136";
+    skos:prefLabel "Buildings colour"@en;
+    rdfs:seeAlso <https://color-hex.org/color/f96288>;
+    .
+
+
+# Fabio's colour palette - modelled as a collection
+coll:hirta a skos:Collection;
+    skos:prefLabel "Hirta"@en;
+    rdfs:comment "colour palette developed by CHRoMA project"@en;
+    skos:member 
+        <https://color-hex.org/color/f96288>;
+        <https://color-hex.org/color/0ab5a1>;
+        <https://color-hex.org/color/93faff>;
+        <https://color-hex.org/color/4e0047>;
+        <https://color-hex.org/color/7c3e00>;
+        <https://color-hex.org/color/a799f8>;
+        <https://color-hex.org/color/00503c>;
+        <https://color-hex.org/color/ebcb18>;
+        <https://color-hex.org/color/8b7400>;
+        <https://color-hex.org/color/027f9e>;
+        <https://color-hex.org/color/858585>;
+        .
+
+
+# Peter's categories for monuments (as nested skos:Collections)
+# overarching element not required, just refer to chroma categories?
+# but can't then isolate chroma categories from other collections
+# can use specialised sub-classes (see Legend & LegendItem above)
+# or simpler - say <x> dct:type is aat:300191079; # keys (texts)
+# want to avoid introducing 'new' modelling as far as possible
 coll:C100 a skos:Collection;
     skos:inScheme <http://purl.org/heritagedata/schemes/1>;
     dct:type aat:300191079; # keys (texts)
