@@ -8,6 +8,8 @@
 @prefix mons: <http://purl.org/heritagedata/schemes/1/concepts/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix aat: <http://vocab.getty.edu/aat/> .
+@prefix coll: <http://purl.org/heritagedata/schemes/1/collections/> .
+
 
 # TODO: implementing as TriG for additional metadata?
 <https://raw.githubusercontent.com/cbinding/chroma/refs/heads/main/data/hes_chroma_v1_0_0_subset.ttl>
@@ -33,7 +35,7 @@ coll:C100 a skos:Collection;
     dct:type aat:300191079; # keys (texts)
     skos:prefLabel "Monument Categories"@en;
     skos:member
-        coll:C101,  # Buildings        
+        coll:C101  # Buildings        
         ;
     .
 	
