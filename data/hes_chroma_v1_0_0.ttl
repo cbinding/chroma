@@ -10,18 +10,6 @@
 @prefix aat: <http://vocab.getty.edu/aat/> .
 @prefix coll: <http://purl.org/heritagedata/schemes/1/collections/> .
 
-<https://raw.githubusercontent.com/cbinding/chroma/refs/heads/main/data/hes_chroma_v1_0_0.ttl>
-    dct:title "Cultural Heritage Review of Mapping Accessibility (CHROMA)"@en;
-    dct:creator "Ceri Binding, University of South Wales"@en;
-	dct:contributor "Peter McKeague, Historic Environment Scotland"@en;
-    dct:created "2023-06-12"^^xsd:date; 
-    dct:modified "2026-04-15"^^xsd:date;
-    owl:versionInfo "1.0.0"^^xsd:string;
-	dct:description "Defines map legend categorisations for Scottish monuments concepts"@en;
-	dct:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> ;
-    dct:subject aat:300191079; # keys (texts)
-    .
-
 # HES CHROMA categories for monuments (as nested skos:Collections)
 coll:C100 a skos:Collection;
     skos:inScheme <http://purl.org/heritagedata/schemes/1>;
@@ -162,4 +150,16 @@ coll:C111 a skos:Collection;
     skos:prefLabel "Edge"@en;
     skos:scopeNote "Used to define the edge of area features."@en;
     schema:color "#858585";
+    .
+
+<https://raw.githubusercontent.com/cbinding/chroma/refs/heads/main/data/hes_chroma_v1_0_0.ttl>
+    dct:title "Cultural Heritage Review of Mapping Accessibility (CHROMA)"@en;
+    dct:creator "Ceri Binding, University of South Wales"@en;
+	dct:contributor "Peter McKeague, Historic Environment Scotland"@en;
+    dct:created "2023-06-12"^^xsd:date; 
+    dct:modified "2026-04-15"^^xsd:date;
+    owl:versionInfo "1.0.0"^^xsd:string;
+	dct:description "Defines map legend categorisations for Scottish monuments concepts"@en;
+	dct:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> ;
+    dct:subject aat:300191079; # keys (texts)
     .

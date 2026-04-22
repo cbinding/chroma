@@ -1,0 +1,99 @@
+# SPARQL queries to run on RDF data to view HES CHROMA data
+# (Endpoint = https://heritagedata.org/live/sparql.php)
+
+
+# list legend categories with colours and member count
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX aat: <http://vocab.getty.edu/aat/>
+PREFIX schema: <https://schema.org/>
+
+SELECT DISTINCT	?uri ?lbl ?col count(?mem) AS ?counter 
+WHERE {
+	?uri a skos:Collection ;
+		dct:type aat:300435413 ;
+		schema:color ?col ;
+		skos:prefLabel ?lbl ;
+		skos:member ?mem .
+	FILTER(langMatches(lang(?lbl), "EN"))
+}
+GROUP BY ?lbl ?col
+ORDER BY ?lbl
+
+Results:
+uri	lbl	col	counter
+http://purl.org/heritagedata/schemes/1/collections/C101	Buildings	#F96288	464
+http://purl.org/heritagedata/schemes/1/collections/C102	Cultivation	#0AB5A1	7
+http://purl.org/heritagedata/schemes/1/collections/C103	Geology	#93FAFF	4
+http://purl.org/heritagedata/schemes/1/collections/C104	Industrial	#4E0047	724
+http://purl.org/heritagedata/schemes/1/collections/C105	Land Use	#7C3E00	193
+http://purl.org/heritagedata/schemes/1/collections/C106	Military	#A799F8	159
+http://purl.org/heritagedata/schemes/1/collections/C107	Miscellaneous	#00503C	244
+http://purl.org/heritagedata/schemes/1/collections/C108	Religious	#EBCB18	176
+http://purl.org/heritagedata/schemes/1/collections/C109	Transport	#8B7400	149
+http://purl.org/heritagedata/schemes/1/collections/C110	Water	#027F9E	53
+
+
+# list category that mon:691 "ALUM WORKS" is a member of
+# including the colour associated with the category
+# (should be only one category - "Industrial" #4E0047) 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <https://schema.org/>
+PREFIX mon: <http://purl.org/heritagedata/schemes/1/concepts/>
+
+SELECT DISTINCT ?lbl ?col 
+WHERE {
+	?uri skos:member mon:691;
+		skos:prefLabel ?lbl;
+		schema:color ?col .
+	FILTER(langMatches(lang(?lbl), "EN"))
+}
+ORDER BY ?lbl
+
+
+# list concepts that are members of the "cultivation" category (C102)
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX coll: <http://purl.org/heritagedata/schemes/1/collections/>
+
+SELECT DISTINCT ?uri ?lbl 
+WHERE {
+	coll:C102 skos:member ?uri .
+	OPTIONAL { ?uri skos:prefLabel ?lbl }
+	FILTER(langMatches(lang(?lbl), "en")) .
+   
+}
+ORDER BY ?lbl
+
+Results:
+<http://purl.org/heritagedata/schemes/1/concepts/56>	"CORD RIG"@en
+<http://purl.org/heritagedata/schemes/1/concepts/47>	"CULTIVATION REMAINS"@en
+<http://purl.org/heritagedata/schemes/1/concepts/51>	"CULTIVATION TERRACE"@en
+<http://purl.org/heritagedata/schemes/1/concepts/57>	"LAZY BEDS"@en
+<http://purl.org/heritagedata/schemes/1/concepts/53>	"PLOUGH MARKS"@en
+<http://purl.org/heritagedata/schemes/1/concepts/54>	"RIG AND FURROW"@en
+<http://purl.org/heritagedata/schemes/1/concepts/503820>	"WATERCRESS BED"@en
+
+
+# list all the properties of this particular collection
+DESCRIBE <http://purl.org/heritagedata/schemes/1/collections/C100>
+
+Results:
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ns0: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ns1: <http://purl.org/dc/terms/> .
+
+<http://purl.org/heritagedata/schemes/1/collections/C100> rdf:type ns0:Collection ;
+    ns0:inScheme <http://purl.org/heritagedata/schemes/1> ;
+    ns0:prefLabel "Monument Categories"@en ;
+    ns0:member <http://purl.org/heritagedata/schemes/1/collections/C101> ,
+        <http://purl.org/heritagedata/schemes/1/collections/C102> ,
+        <http://purl.org/heritagedata/schemes/1/collections/C103> ,
+        <http://purl.org/heritagedata/schemes/1/collections/C104> ,
+        <http://purl.org/heritagedata/schemes/1/collections/C105> ,
+        <http://purl.org/heritagedata/schemes/1/collections/C106> ,
+        <http://purl.org/heritagedata/schemes/1/collections/C107> ,
+        <http://purl.org/heritagedata/schemes/1/collections/C108> ,
+        <http://purl.org/heritagedata/schemes/1/collections/C109> ,
+        <http://purl.org/heritagedata/schemes/1/collections/C110> ,
+        <http://purl.org/heritagedata/schemes/1/collections/C111> ;
+        ns1:type <http://vocab.getty.edu/aat/300191079> .
